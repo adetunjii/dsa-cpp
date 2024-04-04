@@ -27,7 +27,6 @@ public:
 
 class Solution {
 public:
-
     int height(TreeNode* node) {
         if (node == nullptr) {
             return 0;
