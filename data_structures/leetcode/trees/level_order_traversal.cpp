@@ -25,7 +25,7 @@ public:
                 q.pop();
 
                 temp.push_back(top->val);
-
+            
                 if (top->left != nullptr) q.push(top->left);
                 if (top->right != nullptr) q.push(top->right);
             }
