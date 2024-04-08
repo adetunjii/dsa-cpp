@@ -22,10 +22,8 @@ public:
 
     int goodNodes(TreeNode* root) {
         if (!root) return 0;
-
         isGood(root->left, root->val);
         isGood(root->right, root->val);
-
         return count;
     }
 };
