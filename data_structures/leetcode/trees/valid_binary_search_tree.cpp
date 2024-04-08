@@ -55,14 +55,13 @@ public:
 
 
 int main() {
-    TreeNode* lr = new TreeNode(5);
-    TreeNode* left = new TreeNode(1, lr, nullptr);
+    TreeNode* left = new TreeNode(4);
     TreeNode* rl = new TreeNode(3);
-    TreeNode* rr = new TreeNode(6);
+    TreeNode* rr = new TreeNode(7);
 
-    TreeNode* right = new TreeNode(4, rl, rr);
+    TreeNode* right = new TreeNode(6, rl, rr);
 
-    TreeNode* root = new TreeNode(2, left, right);
+    TreeNode* root = new TreeNode(5, left, right);
 
     Solution sol;
     cout << sol.isValidBSTRecursive(root) << endl;
