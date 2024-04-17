@@ -23,8 +23,30 @@ public:
         return 0;
     }();
 
-    // optimal solution: keep original nodes and copy nodes side by side, then extract them after;    
     Node* copyRandomList(Node* head) {
+        if (head == nullptr) return nullptr;
+
+        unordered_map<Node*, Node*> hashmap;
+
+        auto temp = head;
+        while (temp != nullptr) {
+            hashmap[temp] = new Node(temp->val);
+            temp = temp->next;
+        }
+
+        temp = head;
+        while(temp != nullptr) {
+            auto clone = hashmap[temp];
+            clone->next = hashmap[temp->next];
+            clone->random = hashmap[temp->random];
+            temp = temp->next;
+        }
+
+        return hashmap[head];
+    }
+
+    // optimal solution: keep original nodes and copy nodes side by side, then extract them after;    
+    Node* copyRandomListOptimal(Node* head) {
         if (head == nullptr) return nullptr;
 
         auto temp = head;
