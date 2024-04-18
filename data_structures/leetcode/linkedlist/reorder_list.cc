@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "listutil.h"
 
 using namespace std;
@@ -69,6 +70,6 @@ int main() {
         cout << temp->val << " ";
         temp = temp->next;
     }
-
+    cout << "\n";
     return 0;
 }

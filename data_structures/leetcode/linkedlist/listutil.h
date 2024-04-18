@@ -1,7 +1,7 @@
 #ifndef LISTUTIL_H
 #define LISTUTIL_H
 
-#include <vector>;
+#include <vector>
 
 struct ListNode {
     int val;
