@@ -17,12 +17,6 @@ public:
 
 class Solution {
 public: 
-    int Init = [] {
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
-        return 0;
-    }();
-
     Node* copyRandomList(Node* head) {
         if (head == nullptr) return nullptr;
 
@@ -81,3 +75,9 @@ public:
         return clone;
     }
 };
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cout.tie(nullptr);
+    cin.tie(nullptr);
+}

@@ -5,12 +5,6 @@ using namespace std;
 
 class Solution {
 public:
-    int Init = []{
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
-        return 0;
-    }();
-
     void reorderList(ListNode* head) {
         if (head == nullptr || head->next == nullptr) {
             return;
@@ -48,6 +42,30 @@ public:
             prev->next = next;
             start = next;
         }
+
+        auto temp = head;
+        while (temp != nullptr) {
+            cout << temp->val << " ";
+            temp = temp->next;
+        }
     }
 };
 
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
+    vector<int> a;
+
+    int num;
+    while (cin >> num) {
+        a.push_back(num);
+    }
+
+    Solution sol;
+    sol.reorderList(ListNode::fromArray(a));
+
+    return 0;
+}
