@@ -43,11 +43,6 @@ public:
             start = next;
         }
 
-        auto temp = head;
-        while (temp != nullptr) {
-            cout << temp->val << " ";
-            temp = temp->next;
-        }
     }
 };
 
@@ -65,7 +60,15 @@ int main() {
     }
 
     Solution sol;
-    sol.reorderList(ListNode::fromArray(a));
+
+    ListNode* head = ListNode::fromArray(a);
+    sol.reorderList(head);
+
+    auto temp = head;
+    while (temp != nullptr) {
+        cout << temp->val << " ";
+        temp = temp->next;
+    }
 
     return 0;
 }
