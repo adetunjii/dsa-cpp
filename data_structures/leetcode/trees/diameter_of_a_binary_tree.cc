@@ -4,24 +4,46 @@
 
 using namespace std;
 
-class Solution {
-public:
-    int height(TreeNode* node, int& maxDiameter) {
-        if (node == 0) return 0;
+int dfs(TreeNode* node, int& diameter) {
+    if (node == nullptr) return 0;
 
-        int left = height(node->left, maxDiameter);
-        int right = height(node->right, maxDiameter);
+    int left = dfs(node->left, diameter);
+    int right = dfs(node->right, diameter);
 
-        maxDiameter = max(maxDiameter, left + right);
+    diameter = max(diameter, left + right);
+    return max(left, right) + 1;
+}
 
-        return 1 + max(left, right);
+int diameterOfBinaryTree(TreeNode* root) {
+    if (root == nullptr) return 0;
+
+    int diameter = 0;
+    dfs(root, diameter);
+    return diameter;
+}
+
+int main() {  
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int N;
+    cin >> N;
+
+    for (int i = 0; i < N; i++) {
+        vector<int> nodes;
+        int num;
+        while (cin.peek() != '\n' && cin.peek() != EOF ) {
+            cin >> num;
+            nodes.push_back(num);
+        }
+
+        cin.ignore();
+
+        if (!nodes.empty()) {
+            auto root = TreeNode::buildTree(nodes);
+            cout << diameterOfBinaryTree(root) << "\n";
+        }
     }
 
-    int diameterOfABinaryTree(TreeNode* root) {
-        int max = 0;
-        if (root == nullptr) return 0;
-
-        height(root, max);
-        return max;
-    }  
-};
+    return 0;
+}
