@@ -3,45 +3,49 @@
 
 using namespace std;
 
-class Solution {
-public:
+int maxPath(TreeNode* node, int& m) {
+    if (node == nullptr) return 0;
+
+    int left = max(0, maxPath(node->left, m));
+    int right = max(0, maxPath(node->right, m));
+
+    m = max(m, left+right+node->val);
+    return max(left, right) + node->val;
+}
+
+// maximum path sum of a binary tree
+int maxPathSum(TreeNode* root) {
+    if (root == nullptr) return 0;
+
     int maximum = INT_MIN;
-
-    int maxPath(TreeNode* node) {
-        if (node == nullptr) return 0;
-
-        int left = max(0, maxPath(node->left));
-        int right = max(0, maxPath(node->right));
-
-        maximum = max(maximum, left+right+node->val);
-        return max(left,right) + node->val;
-    }
-
-    int maxPathSum(TreeNode* root) {
-        if (root == nullptr) return 0;
-        maxPath(root);
-        return maximum;
-    }
-};
+    maxPath(root, maximum);
+    return maximum;
+}
 
 int main() {
-    
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    vector<int> input;
+    int N;
+    cin >> N;
 
-    int num;
-    while(cin >> num) {
-        input.push_back(num);
+    for (int i = 0; i < N; i++) {
+        vector<int> nodes;
+
+        while (cin.peek() != '\n' && cin.peek() != EOF) {
+            int num;
+            cin >> num;
+            nodes.push_back(num);
+        }
+        
+        cin.ignore();   
+
+        if (!nodes.empty()) {  
+            auto root = TreeNode::buildTree(nodes);
+            cout << maxPathSum(root) << "\n";
+        }
     }
 
-    auto root = TreeNode::buildTree(input);
-
-    Solution sol;
-
-    cout << sol.maxPathSum(root) << endl;
-    
     return 0;
 }
