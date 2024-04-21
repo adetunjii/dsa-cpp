@@ -1,7 +1,27 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
+
+int maxAreaOptimal(vector<int>& height) {
+	if (height.empty()) return 0;
+
+	int m = 0;
+	int left = 0, right = height.size()-1; 
+
+	while (left < right) {
+		m = max(m, (right-left) * min(height[right], height[left]));
+
+		if (height[left] > height[right]) {
+			right -= 1;
+		} else {
+			left += 1;
+		}
+	}
+
+	return m;
+}
 
 int maxArea(vector<int>& height) {
 	if (height.empty()) return 0;
@@ -9,10 +29,9 @@ int maxArea(vector<int>& height) {
 	int m = 0;
 
 	for (int i = 0; i < height.size(); i++) {
-		for (j = i+1; j < height.size(); j++) {
-			int height = min(height[i], height[j]);
-			int width = j;
-			m = max(height * width, m);
+		for (int j = i+1; j < height.size(); j++) {
+			int h = min(height[i], height[j]) * (j - i);
+			m = max(h, m);
 		}
 	}
 
@@ -27,7 +46,7 @@ int main() {
 	int N;
 	cin >> N;
 
-	for (int i = 0; i < N; i++) {
+	for (int i = 1; i <= N; i++) {
 		vector<int> heights;
 		int num;
 		while (cin.peek() != '\n' && cin.peek() != EOF) {
@@ -37,7 +56,7 @@ int main() {
 		cin.ignore();
 
 		if (!heights.empty()) {
-			cout << maxArea(heights) << "\n";
+			cout << maxAreaOptimal(heights) << "\n";
 		}
 	}
 
