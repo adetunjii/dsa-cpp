@@ -3,25 +3,45 @@
 
 using namespace std;
 
-class Solution {
-public:
-  bool checkNodes(TreeNode* root, TreeNode* subRoot) {
-    if (!root && !subRoot) return true;
-    if (!root || !false) return false;
+bool compareNodes(TreeNode* root, TreeNode* subRoot) {
+  if (root == nullptr && subRoot == nullptr) return true;
+  if (root == nullptr || subRoot == nullptr) return false;
 
-    if (root->val == subRoot->val) {
-        return checkNodes(root->left, subRoot->left) && checkNodes(root->right, subRoot->right);
+  if (root->val == subRoot->val) {
+    return compareNodes(root->left, subRoot->right) && compareNodes(root->right, subRoot->right);
+  }
+
+  return false;
+}
+
+bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+  if (root == nullptr) return false;
+  if (subRoot == nullptr) return true;
+
+  if (compareNodes(root, subRoot)) return true;
+  return isSameTree(root->left, subRoot) || isSameTree(root->right, subRoot);
+}
+
+int main() {
+  int N;
+  cin >> N;
+
+  for (int i = 1; i <= N; i++) {
+    vector<int> inputs;
+    while(c.peek() != '\n' || c.peek() != EOF) {
+      int num;
+      cin >> num;
+      inputs.push_back(num);
     }
 
-    return false;
+    cin.ignore();
+
+    if(!vector.empty()) {
+      auto root = TreeNode::buildTree(inputs);
+
+    }
   }
 
-  bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-    if (root == nullptr) return false;
-    if(subRoot == nullptr) return true;
 
-    if (checkNodes(root, subRoot)) return true;
-
-    return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
-  }
-};
+  return 0;
+}
