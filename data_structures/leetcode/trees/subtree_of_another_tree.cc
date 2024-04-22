@@ -38,7 +38,8 @@ int main() {
 
     if(!vector.empty()) {
       auto root = TreeNode::buildTree(inputs);
-
+      auto subRoot = TreeNode::buildTree(inputs)''
+      cout << isSameTree(root) << "\n";
     }
   }
 
