@@ -33,13 +33,12 @@ int main() {
       cin >> num;
       inputs.push_back(num);
     }
-
     cin.ignore();
 
     if(!vector.empty()) {
       auto root = TreeNode::buildTree(inputs);
       auto subRoot = TreeNode::buildTree(inputs)''
-      cout << isSameTree(root) << "\n";
+      cout << isSameTree(root) << "\n"
     }
   }
 
