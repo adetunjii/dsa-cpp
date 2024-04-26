@@ -35,9 +35,9 @@ int main() {
     }
     cin.ignore();
 
-    if(!vector.empty()) {
+    if(!inputs.empty()) {
       auto root = TreeNode::buildTree(inputs);
-      auto subRoot = TreeNode::buildTree(inputs)''
+      auto subRoot = TreeNode::buildTree(inputs);
       cout << isSameTree(root) << "\n"
     }
   }

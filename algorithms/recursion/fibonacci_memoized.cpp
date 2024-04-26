@@ -6,6 +6,8 @@ using namespace std;
 int fib(int n) {
     vector<int> bucket(n+1, -1);
 
+    if(n <= 0) return 0;
+
     if (n <= 2) {
         bucket[n] = 1;
         return 1;
