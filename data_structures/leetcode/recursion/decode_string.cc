@@ -5,19 +5,22 @@ using namespace std;
 
 string decode_string(const string& s, int& idx) {
 	string res;
-
+	
 	while (idx < s.length() && s[idx] != ']') {
-		if (!isdigit(s[idx])) res += s[idx++];
-		else {
+		if (!isdigit(s[idx])) {
+			res += s[idx];
+			idx += 1;
+		} else {
 			int outer_num = 0;
 			while (idx < s.length() && isdigit(s[idx])) {
 				outer_num *= 10;
-				outer_num += s[idx++] - '0';
+				outer_num += s[idx] - '0';
+				idx += 1;
 			}
 
-			idx += 1; // skip the opening bracket
+			idx += 1; // skip opening bracket
 			string decoded = decode_string(s, idx);
-			idx += 1; // skip the closing bracket
+			idx += 1; // skip closing bracket;
 
 			while (outer_num > 0) {
 				res += decoded;
@@ -29,10 +32,8 @@ string decode_string(const string& s, int& idx) {
 	return res;
 }
 
-
 string decodeString(string s) {
 	int idx = 0;
-
 	return decode_string(s, idx);
 }
 
