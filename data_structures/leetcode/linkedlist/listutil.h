@@ -10,10 +10,10 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
     
-    static ListNode* fromArray(std::vector<int> a);
+    static ListNode* fromArray(std::vector<int>& a);
 };
 
-ListNode* ListNode::fromArray(std::vector<int> a) {
+ListNode* ListNode::fromArray(std::vector<int>& a) {
     ListNode* head = nullptr, *current = nullptr;
 
     for (int x : a) {

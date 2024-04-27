@@ -14,7 +14,7 @@ ListNode* swapPairs(ListNode* head) {
 
 void print(ListNode* head) {
 	while (head != nullptr) {
-		cout << head->val << "-";
+		cout << head->val << "->";
 		head = head->next;
 	}
 	cout << "NULL\n";
