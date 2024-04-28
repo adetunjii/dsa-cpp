@@ -3,11 +3,11 @@
 
 using namespace std;
 
-ListNode* removeNodes(ListNode* head) {
+ListNode* removeNodes(ListNode* head, val) {
 	if (head == nullptr) return head;
 
 	head->next = removeNodes(head->next);
-	return head->next != nullptr && head->next->val > head->val ? head->next : head;
+	return head->val == val ? head->next : head;
 }
 
 void print(ListNode* head) {
