@@ -5,7 +5,6 @@ using namespace std;
 
 ListNode* removeNodes(ListNode* head, val) {
 	if (head == nullptr) return head;
-
 	head->next = removeNodes(head->next);
 	return head->val == val ? head->next : head;
 }
@@ -19,7 +18,6 @@ void print(ListNode* head) {
 }
 
 int main() {
-
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 	cout.tie(nullptr);
