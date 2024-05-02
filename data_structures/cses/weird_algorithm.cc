@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void solve(long long n) {
+void solve(int64_t n) {
 
 	while (n != 1) { 
 		cout << n << " "; 
@@ -19,9 +19,12 @@ int main() {
 	cout.tie(nullptr);
 
 	int N;
-	while (cin >> N ) {
-		solve(N);
-	}
+	cin >> N;
+
+	for (int i = 1; i <= N; i++) {
+		while (cin.peek() != '\n' && cin.peek() != EOF) { 
+			// do some work
+		}
 
 	return 0;
 }
