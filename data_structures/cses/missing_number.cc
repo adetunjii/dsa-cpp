@@ -1,21 +1,19 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-void solve(int n, vector<int>& nums) {
-	
-	vector<int> bucket(n+1, -1);
+int solve(int n, vector<int>& nums) {
+	int target = 0;
 
-	for (int i = 0; i < nums.size(); i++) {
-		bucket[nums[i]] = 1;
+	for (int i = 0; i < n - 1; i++) {
+		target ^= nums[i];
+		target ^= (i + 1); 
 	}
 
-	for (int i = 1; i <= n; i++) {
-		if (bucket[i] == -1) {
-			cout << i << "\n";
-		}
-	} 
+	return target ^ n;
 }
+
 
 
 int main() {
@@ -29,14 +27,14 @@ int main() {
 
 		cin.ignore();
 		vector<int> A;
-		while (cin.peek() != '\n') {
+		while (cin.peek() != '\n' && cin.peek() != EOF) {
 			int num;
 			cin >> num;
 			A.push_back(num);
 		}
-		solve(N, A);
+		cout << solve(N, A) << "\n";
+		cin.ignore();
 	}
-	cin.ignore();
 
 	return 0;
 }
