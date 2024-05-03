@@ -3,15 +3,16 @@
 
 using namespace std;
 
-int solve(int n, vector<int>& nums) {
-	int target = 0;
+int missingNumber(vector<int>& nums) {
+	int n = nums.size();
 
-	for (int i = 0; i < n - 1; i++) {
+	int target = 0;
+	for (int i = 0; i < n; i++) {
 		target ^= nums[i];
 		target ^= (i + 1); 
 	}
 	
-	return target ^ n;
+	return target;
 }
 
 int main() {
@@ -19,19 +20,21 @@ int main() {
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 
-	while (cin.peek() != EOF) {
-		int N;
-		cin >> N;
+	int N;
+	cin >> N;
 
-		cin.ignore();
-		vector<int> A;
+	for (int i = 1; i <= N; i++) {
+		vector<int> nums;
+		int num;
+
 		while (cin.peek() != '\n' && cin.peek() != EOF) {
-			int num;
 			cin >> num;
-			A.push_back(num);
+			nums.push_back(num);
 		}
-		cout << solve(N, A) << "\n";
 		cin.ignore();
+
+		if (!nums.empty())
+			cout << missingNumber(nums) << "\n";
 	}
 
 	return 0;
