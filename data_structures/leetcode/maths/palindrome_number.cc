@@ -5,7 +5,6 @@ using namespace std;
 bool isPalindrome(int x) {
 	if (x <= 10) return false;
 
-	// use long long to avoid overflow error
 	int64_t rev = 0;
 	while (x > 0) {
 		rev = rev * 10 + x % 10;
