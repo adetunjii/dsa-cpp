@@ -20,6 +20,7 @@ bool isSafe(vector<string>& board, int row, int col) {
 void solve(vector<string>& board, int row) {
 	if (row == size(board)) {
 		solutions.push_back(board);
+		ways += 1;
 		return;
 	}
 
@@ -50,6 +51,7 @@ int main() {
 		}
 	}
 
+	cout << ways << "\n";
 
 	return 0;
 }
