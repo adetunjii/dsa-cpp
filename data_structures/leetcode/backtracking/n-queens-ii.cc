@@ -12,8 +12,8 @@ bool isSafe(vector<string>& board, int row, int col) {
 	for (int i = 0; i < n; i++) {
 		if (board[i][col] == 'Q') return false;
 
-		if (row - i >= 0 && col - i >= 0 && board[row - i][col - i] == 'Q') return false;
-		if (row - i >= 0 && col + i < n && board[row - i][col + i] == 'Q') return false;
+		if (row - 1 >= 0 && col - 1 >= 0 && board[row - 1][col - 1] == 'Q') return false;
+		if (row - 1 >= 0 && col + 1 < n && board[row - 1][col + 1] == 'Q') return false;
 	}
 
 	return true;

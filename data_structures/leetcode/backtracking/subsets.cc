@@ -1,22 +1,44 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
-vector<vector<int>> subsets(vector<int>& nums) {
+vector<vector<int>>res;
 
+void solve(vector<int>& nums, vector<int> out, int idx) {
+    if (idx >= nums.size()) {
+    	res.push_back(out);
+    	return;
+    }
+
+    solve(nums, out, idx+1);`
+
+    out.push_back(nums[idx]);
+    solve(nums, out, idx+1);
 }
 
-int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(0);
+vector<vector<int>> subsets(vector<int>& nums) {
+    vector<int> out;
+    solve(nums, out, 0);
+    return res; 
+}
 
-	auto res = subsets(nums);
-	for (int i = 0; i < res.size(); i++) {
-		for (int j = 0; j < res[i].size; j++) {
-			cout << res[i][j] << " ";
+
+int main() {
+
+	vector<int> test;
+	test.push_back(1);
+	test.push_back(2);
+	test.push_back(3);
+
+	auto r = subsets(test);
+
+	for (int i = 0; i < r.size(); i++) {
+		for (int j = 0; j < r[i].size(); j++) {
+			cout << r[i][j] << " ";
 		}
 		cout << "\n";
 	}
+
+	return 0;
 }
