@@ -20,6 +20,8 @@ void solve(vector<int>& nums, vector<int>& out, const int& sum, int idx) {
 
 	// problem is that it a number can be repeated until the problem is solved
 	for (int i = idx; i < n; i++) {
+		if (i > idx && nums[i] == nums[i-1]) continue;
+
 		out.push_back(nums[i]);
 		solve(nums, out, sum + nums[i], i);
 
@@ -30,7 +32,7 @@ void solve(vector<int>& nums, vector<int>& out, const int& sum, int idx) {
 void combinationSum(vector<int>& candidates, int t) {
 	target = t;
 	vector<int> out;
-
+	sort(candidates.begin(), candidates.end());
 	solve(candidates, out, 0, 0);
 };
 
