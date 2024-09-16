@@ -1,7 +1,8 @@
 #include <iostream>
+#include <utility>
+#include <functional>
 #include "treenode.h"
 
-using namespace std;
 
 class SolutionNaive {
 public:
@@ -21,38 +22,27 @@ public:
         int left = height(root->left);
         int right = height(root->right);
 
+        
         return abs(left-right) <= 1 && isBalanced(root->left) && isBalanced(root->right);
      }
 };
 
 class Solution {
 public:
-    int height(TreeNode* node) {
-        if (node == nullptr) {
-            return 0;
-        }
+    std::pair<bool, int> recurse(TreeNode* node) {
+        if (node == nullptr) return make_pair(true, 0);
 
-        int left = height(node->left);
-        if (left == -1) { return -1; }
+        auto left = recurse(node->left);
+        auto right = recurse(node->right);
 
-        int right = height(node->right);
-        if (right == - 1) {return -1;}
+        int maxHeight = max(left.second, right.second);
+        bool isValid = abs(left.second-right.second) <= 1 && left.first && right.first; // recursive case;
 
-        if(abs(left-right) > 1) {
-            return -1;
-        }
+        return make_pair(isValid, maxHeight);
+    } 
 
-        return abs(left - right) <= 1;
+    bool isBalanced(TreeNode* root) {   
+        return recurse(root).first;
     }
-
-    bool isBalanced(TreeNode* root) {
-        if (root == nullptr) {
-            return true;
-        }
-
-        if (height(root) == -1) { return false;}
-        return true;
-    }
-
 };
 

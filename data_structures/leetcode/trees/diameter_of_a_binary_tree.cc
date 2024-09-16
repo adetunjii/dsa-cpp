@@ -5,10 +5,10 @@
 using namespace std;
 
 int dfs(TreeNode* node, int& diameter) {
-    if (node == nullptr) return 0;
+    if (node == nullptr) return 0; /* Base Case */
 
-    int left = dfs(node->left, diameter);
-    int right = dfs(node->right, diameter);
+    int left = dfs(node->left, diameter);   /* recursive case */
+    int right = dfs(node->right, diameter); /* recursive case */
 
     diameter = max(diameter, left + right);
     return max(left, right) + 1;
