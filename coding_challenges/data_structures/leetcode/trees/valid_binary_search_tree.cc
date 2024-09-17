@@ -51,26 +51,20 @@ public:
         if (root == nullptr) return true;
         return isBST(root, numeric_limits<long long>::min(), numeric_limits<long long>::max());
     }
+
+    bool inorder(TreeNode* node, long& prev) {
+        if (node == nullptr) return true;
+
+        if (!inorder(node->left, prev)) return false;
+        if (node->val <= prev) return false;
+        prev = node->val;
+        if (!inorder(node->right, prev)) return false;
+
+        return true;
+    }
+
+    bool isValidBSTInorder(TreeNode* root) {
+        long prev = std::numeric_limits<long>::min();
+        return inorder(root, prev);
+    }
 };
-
-
-int main() {
-    TreeNode* left = new TreeNode(4);
-    TreeNode* rl = new TreeNode(3);
-    TreeNode* rr = new TreeNode(7);
-
-    TreeNode* right = new TreeNode(6, rl, rr);
-
-    TreeNode* root = new TreeNode(5, left, right);
-
-    Solution sol;
-    cout << sol.isValidBSTRecursive(root) << endl;
-
-    free(left);
-    free(rl);
-    free(rr);
-    free(right);
-    free(root);
-
-    return 0;
-}

@@ -14,6 +14,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
     static TreeNode* buildTree(vector<int>& arr);
+    static void deleteTree(TreeNode* node);
 };
 
 TreeNode* TreeNode::buildTree(vector<int>& arr) {
@@ -44,5 +45,7 @@ TreeNode* TreeNode::buildTree(vector<int>& arr) {
 
     return root;
 }
+
+void TreeNode::deleteTree(TreeNode* node) {}
 
 #endif //TREENODE_H
