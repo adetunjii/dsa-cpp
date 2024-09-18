@@ -166,6 +166,56 @@ public:
         inorder(node->right, res);
     }
 
+    std::vector<int> inOrderTraversalIterative() {
+        std::vector<int> res;
+        if (root == nullptr) return {};
+
+        std::stack<TreeNode*> st;
+        auto current = root;
+
+        while (current != nullptr || !st.empty()) {
+            while(current != nullptr) {
+                st.push(current);
+                current = current->left;
+            }
+
+            current = st.top();
+            st.pop();
+            res.push_back(current->data);
+            if (current->right) current = current->right;
+        }
+
+        return res;
+    }
+
+    std::vector<int> postOrderTraversalIterative() {
+        std::vector<int> res;
+        if(root == nullptr) return {};
+
+        std::stack<TreeNode*> st;
+        auto current = root;
+        TreeNode* lastVisited = nullptr;
+
+        while(!st.empty() || current != nullptr) {
+            while(current != nullptr) {
+                st.push(current);
+                current = current->left;
+            }
+
+            current = st.top();
+            res.push_back(current->data);
+
+            if(current->right != nullptr && lastVisited != current->right) {
+                current = current->right;
+            } else {
+                lastVisited = current;
+                st.pop();
+            }
+        }
+
+        return res;
+    }
+
     std::vector<int> postOrderTraversal() {
         std::vector<int> res;
         postOrder(root, res);
