@@ -190,29 +190,55 @@ public:
 
     std::vector<int> postOrderTraversalIterative() {
         std::vector<int> res;
-        if(root == nullptr) return {};
 
         std::stack<TreeNode*> st;
-        auto current = root;
+        TreeNode* current = root;
         TreeNode* lastVisited = nullptr;
 
-        while(!st.empty() || current != nullptr) {
+        while(current != nullptr || !st.empty()) {
             while(current != nullptr) {
                 st.push(current);
                 current = current->left;
             }
 
             current = st.top();
-            res.push_back(current->data);
 
-            if(current->right != nullptr && lastVisited != current->right) {
+            if(current->right != nullptr && current->right != lastVisited) {
                 current = current->right;
             } else {
-                lastVisited = current;
+                res.push_back(current->data);
                 st.pop();
+                lastVisited = current;
+                current = nullptr;
             }
         }
+        return res;
+    }
 
+    std::vector<int> postorderIterative2stack(TreeNode* node) {
+        std::vector<int> res;
+
+        if (node == nullptr) return res;
+
+        std::stack<TreeNode*> st1;
+        std::stack<TreeNode*> st2;
+        
+        st1.push(node);
+
+        while(!st1.empty()) {
+            auto top = st1.top();
+            st2.push(top);
+            st1.pop();
+
+            if (top->left) st1.push(top->left);
+            if (top->right) st1.push(top->right);
+        }
+
+        while(!st2.empty()) {
+            auto x = st2.top();
+            res.push_back(x->data);
+            st2.pop();
+        }
         return res;
     }
 
