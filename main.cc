@@ -16,7 +16,6 @@ int main() {
 	bool allocated;
 
 
-
 	cout << "Sizeof unsigned int:: " << sizeof(unsigned int) << endl;
 	cout << "Size of blockHeaderStruct:: " << sizeof(blockHeaderStruct) << endl;
 
