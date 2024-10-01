@@ -4,7 +4,6 @@
 #include "treenode.h"
 
 using namespace std;
-
 class Solution {
 public: 
     vector<int> rightSideView(TreeNode* root) {
@@ -19,6 +18,8 @@ public:
             size_t currentQSize = q.size();
             res.push_back(back->val);
 
+
+            // clear the current nodes in the queue and add the nodes of the next level in the tree. 
             for (size_t i = 0; i < currentQSize; i++) {
                 auto front = q.front();
                 q.pop();

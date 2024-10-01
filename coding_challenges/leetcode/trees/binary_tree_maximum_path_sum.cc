@@ -3,6 +3,10 @@
 
 using namespace std;
 
+// the key to understanding this problem is to understand 
+// that paths are different from subtrees. 
+// You can only return the max value for a path at a time. 
+
 int maxPath(TreeNode* node, int& m) {
     if (node == nullptr) return 0;
 
