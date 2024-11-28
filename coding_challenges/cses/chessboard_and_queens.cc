@@ -13,7 +13,6 @@ bool isSafe(vector<string>& board, int row, int col) {
 		if (row - i >= 0 && col - i >= 0 && (board[row-i][col-i] == 'Q')) return false;
 		if (row - i >= 0 && col + i < n && (board[row-i][col+i] == 'Q')) return false;
 	}
-
 	return true;
 }
 
@@ -35,9 +34,7 @@ void solve(vector<string>& board, int row) {
 	}
 }
 
-
 int main () {
-
 	ios::sync_with_stdio(false);
 	cin.tie(0);
 
@@ -46,7 +43,6 @@ int main () {
 	while (getline(cin, ln)) {
 		board.push_back(ln);
 	}
-
 
 	solve(board, 0);
 	cout << ways << "\n";

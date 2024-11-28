@@ -8,12 +8,11 @@ struct TreeNode {
     struct TreeNode* left;
     struct TreeNode* right;
 
-    TreeNode(TreeNode* left, TreeNode* right, int data) :   left(left),
-                                                            right(right),
-                                                            data(data)
+    TreeNode(TreeNode* left, TreeNode* right, int data) : left(left),
+                                                          right(right),
+                                                          data(data)
     {}
 };
-
 
 class BinarySearchTree {
 private:
