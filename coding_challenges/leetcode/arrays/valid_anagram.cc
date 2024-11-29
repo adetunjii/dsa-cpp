@@ -16,7 +16,7 @@ class Solution {
 				if (m[t[j]] - 1 == 0) m.erase(t[j]);
 				m[t[j]] -= 1;
 			}
-
+			
 			return m.size() == 0;
 		}
 };
