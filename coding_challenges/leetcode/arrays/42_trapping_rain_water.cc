@@ -22,7 +22,7 @@ int main() {
 		cin.ignore();
 
 		if (!heights.empty()) {
-			cout << maxAreaOptimal(heights) << "\n";
+			// cout << maxAreaOptimal(heights) << "\n";
 		}
 	}
 
