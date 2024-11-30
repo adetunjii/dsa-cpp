@@ -4,8 +4,8 @@
 using namespace std;
 
 ListNode* merge(ListNode* list1, ListNode* list2) {
-	ListNode* res = new ListNode;
-	current = res;
+	ListNode* res = new ListNode();
+	auto current = res;
 
 	while (list1 != nullptr && list2 != nullptr) {
 		if (list1->val < list2->val) {
@@ -23,12 +23,12 @@ ListNode* merge(ListNode* list1, ListNode* list2) {
 }
 
 // runs in O(n * (p + q)) time, O(n) space.
-ListNode* mergeKLists(vector<ListNode*>* lists) {
-	if (lists.empty) return nullptr;
+ListNode* mergeKLists(vector<ListNode*>& lists) {
+	if (lists.empty()) return nullptr;
 
 	auto head = lists[0];
 	for (int i = 1; i < lists.size(); i++) {
-		head = merge(head, list[i]);
+		head = merge(head, lists[i]);
 	}
 
 	return head;
@@ -65,6 +65,6 @@ ListNode* mergeKListsB(vector<ListNode*>& lists) {
 }
 
 int main() {
-	ios_base::sync_with_stdio(nullptr);
-	cin.tie(false);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
 }
