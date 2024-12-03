@@ -27,7 +27,6 @@ vector<string> binaryTreePaths(TreeNode* root) {
 }
 
 int main() {
-
 	ios::sync_with_stdio(false);
 	cin.tie(0);
 
@@ -42,19 +41,15 @@ int main() {
 			nums.push_back(num);
 		}
 		cin.ignore();
-
+		
 		if(!nums.empty()) {
 			TreeNode* root = TreeNode::buildTree(nums);
-
 			auto res = binaryTreePaths(root);
 
 			for (string s : res) {
-				cout << s << "\n";
+				cout << s << endl;
 			}
 		}
 	}
-
-	asdc csfrdrtvgbcddxcdfvbnbbm,k,kl......[;;;;';aqaw2ewdrftygyuioiop;;['']=[]'
-
 	return 0;
 }
