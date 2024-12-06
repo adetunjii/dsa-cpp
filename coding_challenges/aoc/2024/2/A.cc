@@ -22,7 +22,6 @@ bool isDecreasing(vector<int>& list) {
             prev = list[i];
         } else { return false; }
     } 
-
     return true;
 }
 
