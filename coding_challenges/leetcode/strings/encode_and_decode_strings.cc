@@ -11,7 +11,6 @@ public:
             encoded += str;
             encoded += '\n';
         }
-
         return encoded;
     }
 
