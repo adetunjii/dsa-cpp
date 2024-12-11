@@ -10,13 +10,13 @@ public:
         int N = nums.size();
         vector<int> res(N, 1);
         
-        int x = 1;
-        for (int i = 1; i < nums.size(); i++) {
-            res[i] = x * nums[i-1];
-            x = res[i];
+        int prev = 1;
+        for (int i = 0; i < nums.size(); i++) {
+            res[i] = prev;
+            prev *= nums[i];
         }
 
-        int prev = 1;
+        prev = 1;
         for (int j = N - 1; j >= 0; j--) {
             res[j] *= prev;
             prev *= nums[j];
