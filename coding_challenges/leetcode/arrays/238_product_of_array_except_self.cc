@@ -19,7 +19,7 @@ public:
         int prev = 1;
         for (int j = N - 1; j >= 0; j--) {
             res[j] *= prev;
-            prev *= nums[j+1];
+            prev *= nums[j];
         }
 
         return res;
