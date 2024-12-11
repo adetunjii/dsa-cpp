@@ -9,11 +9,11 @@ public:
     vector<int> productExceptSelf(vector<int>& nums) {
         int N = nums.size();
         vector<int> res(N, 1);
-
+        
         int x = 1;
         for (int i = 1; i < nums.size(); i++) {
-            res[i] = x;
-            x *= nums[i-1];
+            res[i] = x * nums[i-1];
+            x = res[i];
         }
 
         int prev = 1;
