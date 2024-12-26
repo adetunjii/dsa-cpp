@@ -9,16 +9,15 @@ class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
         if (nums.empty()) return 0;
-
-        unordered_set<int> s(nums.begin(), nums.end());
+        
         int longest = 0;
+        unordered_set<int> s(nums.begin(), nums.end());
 
-        // find the smallest element in the set
         for (int num : nums) {
-            if (s.find(num-1) == s.end()) { // i.e there is no smaller element
-                int length = 1; 
+            if (s.find(num - 1) == s.end()) {
+                int length = 1;
 
-                while(s.find(num+length) != s.end()) { // while there are consecutive elements, update length;
+                while (s.find(num+1) != s.end()) {
                     length += 1;
                 }
 
@@ -28,12 +27,4 @@ public:
 
         return longest;
     }
-
-
 };
-
-int main() {
-    Solution sol;
-    vector<int> nums = {0,3,2,5,4,6,1,1};
-    cout << sol.longestConsecutive(nums) << endl;;
-}
