@@ -16,10 +16,8 @@ public:
         for (int num : nums) {
             if (s.find(num - 1) == s.end()) {
                 int length = 1;
-
-                while (s.find(num+1) != s.end()) {
+                while (s.find(num+1) != s.end()) 
                     length += 1;
-                }
 
                 longest = max(longest, length);
             }
