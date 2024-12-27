@@ -16,9 +16,8 @@ public:
                 int val = board[r][c] - '1';
                 int mask = 1 << val;
 
-                if (row[r] & mask || col[c] & mask || square[(r/3) * 3 + c/3]) {
+                if (row[r] & mask || col[c] & mask || square[(r/3) * 3 + c/3])
                     return false;
-                }
 
                 row[r] |= mask;
                 col[c] |= mask;
