@@ -24,7 +24,6 @@ public:
                 square[(r/3) * 3 + c/3] |= mask;
             }
         }
-
         return true;
     }
 };
