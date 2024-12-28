@@ -44,8 +44,9 @@ public:
                 length = 1;
                 last_seen = nums[i];
             }
-
             longest = max(longest, length);
         }
+
+        return longest;
     }
 };
