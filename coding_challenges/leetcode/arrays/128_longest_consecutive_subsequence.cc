@@ -16,7 +16,6 @@ public:
         for (int i = 0; i < nums.size(); i++) {
            if (s.find(nums[i] - 1) == s.end()) {
                 int length = 1;
-
                 while(s.find(nums[i]+length) != s.end()) {
                     length += 1;
                 }
@@ -24,14 +23,11 @@ public:
                 longest = max(longest, length);
            }
         }
-
-
         return longest; 
     }
 
     int longestConsecutiveB(vector<int>& nums) {
         if (nums.empty()) return 0;
-
         int longest = 0, length = 1, last_seen = INT_MIN;
         sort(nums.begin(), nums.end());
 
