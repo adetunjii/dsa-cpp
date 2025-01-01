@@ -6,12 +6,11 @@ using namespace std;
 
 int maxAreaOptimal(vector<int>& height) {
 	if (height.empty()) return 0;
-
 	int m = 0;
 	int left = 0, right = height.size()-1; 
 
 	while (left < right) {
-		m = max(m, (right-left) * min(height[right], height[left]));
+		m = max(m, abs(right-left) * min(height[right], height[left]));
 
 		if (height[left] > height[right]) {
 			right -= 1;
@@ -60,6 +59,5 @@ int main() {
 			cout << maxAreaOptimal(heights) << "\n";
 		}
 	}
-
 	return 0;
 }

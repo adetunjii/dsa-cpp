@@ -16,7 +16,6 @@ public:
             if (sum > target) end -= 1;
             else if (sum < target) start += 1;
         }
-
         return {};
     }
 };
