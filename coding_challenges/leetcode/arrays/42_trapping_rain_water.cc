@@ -4,6 +4,34 @@
 
 using namespace std;
 
+class Solution {
+public:
+	int trap(vector<int>& height) {
+		if (height.empty()) return 0;
+		
+		int N = height.size();
+		vector<int> leftMax(N);
+		vector<int> rightMax(N);
+
+		leftMax[0] = height[0];
+		for (int i = 1; i < N; i++) {
+			leftMax[i] = max(leftMax[i-1], height[i]); 
+		}
+
+		rightMax[N-1] = height[N-1];
+		for (int j = N - 2; j >= 0; j--) {
+			rightMax[j] = max(rightMax[j+1], height[j]);
+		}
+
+		int res = 0;
+		for (int i = 0; i < N; i++) {
+			res += min(leftMax[i], rightMax[i]) - height[i];
+		}
+
+		return res;
+	}
+};
+
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
@@ -22,7 +50,6 @@ int main() {
 		cin.ignore();
 
 		if (!heights.empty()) {
-			// cout << maxAreaOptimal(heights) << "\n";
 		}
 	}
 
