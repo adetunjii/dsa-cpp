@@ -18,7 +18,6 @@ public:
             }
             i += 1;
         }
-
         return profit;
     }
 };

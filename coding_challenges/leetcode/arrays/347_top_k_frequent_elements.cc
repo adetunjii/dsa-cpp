@@ -21,7 +21,6 @@ public:
                 res.push_back(n);
                 if (res.size() == k) return res;
         }
-
         return {};
     }
 };
