@@ -11,14 +11,16 @@ public:
 
         unordered_map<int, int> m;
         int max = 0;
+        int currentMax = 0;
 
         for (int i = 0; i < N; i++) {
             m[nums[i]] += 1;
         }
 
         for (const auto& [key, value] : m) {
-            if (value > max_count && value > max) {
+            if (value >= max_count && value > currentMax) {
                 max = key;
+                currentMax = value;
             }
         }
         return max;
