@@ -51,7 +51,7 @@ public:
 			}
 		}
 
-		return
+		return res;
 	}
 };
 
