@@ -71,9 +71,6 @@ int main() {
 			heights.push_back(num);
 		}
 		cin.ignore();
-
-		if (!heights.empty()) {
-		}
 	}
 
 	return 0;
