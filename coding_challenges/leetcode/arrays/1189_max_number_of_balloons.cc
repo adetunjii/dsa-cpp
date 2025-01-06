@@ -6,11 +6,6 @@ using namespace std;
 class Solution {
 public:
     int maxNumberOfBalloons(string text) {
-       // store the characters and their counts in a hashmap
-       // loop through the hashmap to form the word balloon from the characters
-       // and use a while loop so that we can exhaust all the characters in the hashmap
-       // also need to delete a character whose count == 0
-
         unordered_map<char, int> m;
         int res = 0;
 
