@@ -10,13 +10,12 @@ public:
 
         for (int i = 1; i < strs.size(); i++) {
             int c = 0;
-
             while (c < strs[i].size() && strs[i][c] == prefix[c]) {
                 c += 1;
             }
-
             prefix = prefix.substr(0, c);
         }
+        
         return prefix;
     }
 };
