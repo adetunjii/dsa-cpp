@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Solution{
+class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         vector<vector<int>> res;
@@ -27,7 +27,6 @@ public:
                     res.push_back({current, nums[start], nums[end]});
                     start += 1;
                     end -= 1;
-
                     // this is important since the array is already sorted and the positions
                     // of start and end have changed:
                     // There are one of two situations that we can encounter:
@@ -43,7 +42,6 @@ public:
                 }
             }
         }
-
         return res;
     }
 };
