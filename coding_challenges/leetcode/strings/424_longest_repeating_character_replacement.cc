@@ -11,7 +11,6 @@ public:
         vector<int> arr(26);
 
         int l = 0, maxFreq = 0;
-
         for (int r = 0; r < s.size(); r++) {
             arr[s[r]-'A'] += 1;
             maxFreq = max(maxFreq, arr[s[r]-'A']);
