@@ -25,6 +25,6 @@ int main() {
 		while (cin.peek() != '\n' && cin.peek() != EOF) { 
 			// do some work
 		}
-
+	}
 	return 0;
 }
