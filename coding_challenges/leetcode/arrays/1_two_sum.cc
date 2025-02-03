@@ -12,7 +12,6 @@ public:
             if (m.count(diff) > 0) return {m[diff], i};
             m[nums[i]] = i;
         }
-
         return {};
     }
 };
