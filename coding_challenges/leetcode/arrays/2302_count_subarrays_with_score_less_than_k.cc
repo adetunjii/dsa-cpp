@@ -26,12 +26,12 @@ class Solution {
 
             for (int r = 0; r < N; r++) {
                 sum += nums[r];
-                while (sum * (r - l +1) >= k) {
-                    sum -= nums[l];
+                while (sum * (r-l+1) >= k) {
+                    sum -= nums[l]
                     l += 1;
                 }
-
-                result += r - l + 1;
+                // the number of subarrays we can form from the current subarray => count + validWindowLength;
+                res += r - l +1
             }
             return result;
         }
