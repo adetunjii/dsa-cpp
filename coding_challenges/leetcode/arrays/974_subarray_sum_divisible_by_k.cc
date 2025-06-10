@@ -14,7 +14,7 @@ public:
         m[0] = 1;
         for (int i = 0; i < N; i++) {
             sum += nums[i];
-            int rem = ((sum % k) + k) % k;
+            int rem = ((sum % k) + k) % k; // modulo normalisation operation (negative modulos are bad)
             if (m.find(rem) != m.end())
                 count += m[rem];
             m[rem] += 1;
