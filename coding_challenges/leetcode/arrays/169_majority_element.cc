@@ -27,19 +27,19 @@ public:
     }
 
     int majorityElementOptimal(vector<int>& nums) {
-        int count = 0, candidate = 0;
+      int count = 0, winner = 0, N = nums.size();
 
-        for (int num : nums) {
-            if (count == 0) {
-                candidate = num;
-            }
+      for (auto& num : nums) {
+       if(count == 0) {
+         winner = nums[i];
+       }
 
-            if (candidate == num) {
-                count += 1;
-            } else {
-                count -= 1;
-            }
-        }
-        return candidate;
+       if (winner == nums[i]) {
+        count += 1;
+       } else {
+         count -= 1;
+       }
+      }
+      return winner;
     }
 };
