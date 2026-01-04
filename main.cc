@@ -1,47 +1,41 @@
 #include <iostream>
+#include <vector>
+#include <print>
+#include <algorithm>
+#include <functional>
 
-using namespace std;
+int main(int argc, char* argv[]) {
+	std::vector<int> V = {1, 2, 3, 8, 0, 4, 5, 9};
 
-// typedef struct {
-// 	bool allocated;
-// 	bool unallocated;
-// 	unsigned int length;
-// 	uint32_t op;
-// 	char name[];
-// } blockHeaderStruct;
+	auto lessThanFunc = [](int a, int b) { return a < b; };
 
-// int main() {
+	auto printFunc = [](auto& item) { std::print("{}, ", item); };
 
-// 	bool allocated;
+	// Sorting with Lambda
+	std::sort(std::begin(V), std::end(V), lessThanFunc);
+	std::print("Sorted with a Lambda function: ");
+	std::ranges::for_each(V, printFunc);
+	std::println();
 
-// 	cout << "Sizeof unsigned int:: " << sizeof(unsigned int) << endl;
-// 	cout << "Size of blockHeaderStruct:: " << sizeof(blockHeaderStruct) << endl;
+	// Sorting with functors
+	struct {
+		inline bool operator() (int a, int b) { return a < b ; }
+	} customLessThan;
 
-// 	// You can do modulo operation using bitwise &
-// 	// ex: 3 % 2 = 3 & (2-1)
-// 	int num = 3;
-// 	int divisor = 2;
-// 	int result = num & (divisor - 1);
+	std::print("Sorted with a Functor: ");
+	std::sort(std::begin(V), std::end(V), customLessThan);
+	std::ranges::for_each(V, printFunc);
+	std::println();
 
-// 	cout << "Result: " << endl;
+	// Sorting with stdlib compare functions
+	std::sort(std::begin(V), std::end(V), std::less<int>());
+	std::print("Sorted with stdlib compare function: ");
+	std::ranges::for_each(V, printFunc);
+	std::println();
 
-// 	return 0;
-// }
-
-int main() {
-
-	vector<vector<int>> A = {
-		{1, 2, 3}, 
-		{4, 5, 6}, 
-		{7, 8, 9}
-	};
-
-
-	for (int i = 0; i < A.size(); i++) {
-		for (int j = 0; j < A[i].size(); j++) {
-			cout << A[i][j] << endl;
-		}
-	}
-
-	return 0;
+	// Don't like iterators, use range-based sorting. 
+	std::ranges::sort(V, lessThanFunc);
+	std::print("Sorted using range-based sorting + lambda: ");
+	std::ranges::for_each(V, printFunc);
+	std::println();
 }

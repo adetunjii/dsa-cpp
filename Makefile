@@ -1,7 +1,7 @@
-.PHONY: all clean
+.PHONY: all clean main one
 
 main: main.cc
-	gcc main.cc -o main
+	g++ main.cc -o main -g --std=c++23 && ./main
 
 hey:
 	echo $@
