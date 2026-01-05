@@ -2,6 +2,7 @@
 
 main: main.cc
 	g++ main.cc -o main -g --std=c++23 && ./main
+.PHONY: main
 
 hey:
 	echo $@
