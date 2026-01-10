@@ -13,36 +13,36 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
-public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> res;
-        if (root == nullptr) return res;
+// class Solution {
+// public:
+//     vector<vector<int>> levelOrder(TreeNode* root) {
+//         vector<vector<int>> res;
+//         if (root == nullptr) return res;
 
-        queue<TreeNode*> q;
-        q.push(root);
+//         queue<TreeNode*> q;
+//         q.push(root);
 
-        while (!q.empty()) {
-            int size = q.size();
-            vector<int> temp;
+//         while (!q.empty()) {
+//             int size = q.size();
+//             vector<int> temp;
 
-            for (int i = 0; i < size; i++) {
-                TreeNode* top = q.front();
-                q.pop();
+//             for (int i = 0; i < size; i++) {
+//                 TreeNode* top = q.front();
+//                 q.pop();
 
-                temp.push_back(top->val);
+//                 temp.push_back(top->val);
 
-                if (top->left != nullptr) q.push(top->left);
-                if (top->right != nullptr) q.push(top->right);
+//                 if (top->left != nullptr) q.push(top->left);
+//                 if (top->right != nullptr) q.push(top->right);
                 
-            }
+//             }
 
-            res.push_back(temp);
-        }
+//             res.push_back(temp);
+//         }
 
-        return res;
-    }
-};
+//         return res;
+//     }
+// };
 
 
 using namespace std;

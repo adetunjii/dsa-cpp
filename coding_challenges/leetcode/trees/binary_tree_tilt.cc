@@ -17,4 +17,4 @@ public:
 			calc(root, sum);
 			return sum;
 		}
-}
+};

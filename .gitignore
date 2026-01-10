@@ -37,3 +37,9 @@
 .idea
 
 */*.DSYM
+
+# Build objects
+build/*
+
+# External Dependencies
+external/*

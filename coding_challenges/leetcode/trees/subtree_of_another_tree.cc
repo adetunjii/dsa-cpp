@@ -19,7 +19,7 @@ bool isSubtree(TreeNode* root, TreeNode* subRoot) {
   if (subRoot == nullptr) return true;
 
   if (compareNodes(root, subRoot)) return true;
-  return isSameTree(root->left, subRoot) || isSameTree(root->right, subRoot);
+  return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
 }
 
 int main() {
@@ -28,7 +28,7 @@ int main() {
 
   for (int i = 1; i <= N; i++) {
     vector<int> inputs;
-    while(c.peek() != '\n' || c.peek() != EOF) {
+    while(cin.peek() != '\n' || cin.peek() != EOF) {
       int num;
       cin >> num;
       inputs.push_back(num);
@@ -38,7 +38,7 @@ int main() {
     if(!inputs.empty()) {
       auto root = TreeNode::buildTree(inputs);
       auto subRoot = TreeNode::buildTree(inputs);
-      cout << isSameTree(root) << "\n"
+      cout << isSubtree(root, subRoot) << "\n";
     }
   }
 

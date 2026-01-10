@@ -3,9 +3,9 @@
 
 using namespace std;
 
-ListNode* removeNodes(ListNode* head, val) {
+ListNode* removeNodes(ListNode* head, int val) {
 	if (head == nullptr) return head;
-	head->next = removeNodes(head->next);
+	head->next = removeNodes(head->next, val);
 	return head->val == val ? head->next : head;
 }
 
@@ -37,7 +37,7 @@ int main() {
 
 		if (!inputs.empty()) {
 			ListNode* head = ListNode::fromArray(inputs);
-			auto res = removeNodes(head);
+			auto res = removeNodes(head, num);
 			print(res);
 		}
 	}

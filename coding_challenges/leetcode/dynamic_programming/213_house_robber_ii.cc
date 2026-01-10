@@ -3,8 +3,9 @@
 #include <span>
 #include <ranges>
 
-class Solution {
-public:
+namespace dp {
+    int houseRobber(std::span<int> nums);
+
     int rob(std::vector<int>& nums) {
         int N = nums.size();
 
@@ -28,5 +29,5 @@ public:
        }
 
        return dp[N-1];
-    }  
-};
+    }
+}

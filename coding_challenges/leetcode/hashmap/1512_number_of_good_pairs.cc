@@ -18,7 +18,7 @@ public:
         return res;
     }
 
-    int numIdenticalPairs(vector<int>& nums) {
+    int numIdenticalPairsAlternate(vector<int>& nums) {
         int N = nums.size();
         unordered_map<int, int> m;
         int res = 0;

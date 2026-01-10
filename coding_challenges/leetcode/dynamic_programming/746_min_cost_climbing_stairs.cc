@@ -2,8 +2,8 @@
 #include <vector>
 #include <ranges>
 
-class Solution {
-public:
+namespace leetcode::dp{
+
     int minCostClimbingStairs(std::vector<int>& cost) {
         int N = cost.size();
         if (N < 2) return cost[0];
@@ -17,4 +17,4 @@ public:
 
         return dp[N];
     }
-};
+}

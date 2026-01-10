@@ -31,11 +31,11 @@ int numbersWithUniqueDigits(int n) {
 	return res;
 }
 
-int main() {
+// int main() {
 
-	int N;
-	while(cin >> N) 
-		cout << numbersWithUniqueDigits(N) << "\n";
+// 	int N;
+// 	while(cin >> N) 
+// 		cout << numbersWithUniqueDigits(N) << "\n";
 
-	return 0;
-}
+// 	return 0;
+// }

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Solution{
+class Solution {
 public:
     vector<int> twoSum(std::vector<int>& nums, int target) {
       unordered_map<int, int> m;
@@ -18,4 +18,5 @@ public:
         m[nums[i]] = i;
     }
       return {};
+    }
 };

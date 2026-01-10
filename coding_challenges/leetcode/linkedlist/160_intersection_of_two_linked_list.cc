@@ -52,7 +52,7 @@ public:
     //    nodeB = [5,6,1,8,4,5]
     //    By the time both pointers traverse the list by exactly (m+n) times, we will find the intersection, and 
     //    if it doesn't exist, we will return a nullptr;
-    ListNode* getIntersectionNode(ListNode* headA, ListNode* headB) {
+    ListNode* getIntersectionNodeAlt(ListNode* headA, ListNode* headB) {
         auto a = headA, b = headB;
 
         while (a != b) {

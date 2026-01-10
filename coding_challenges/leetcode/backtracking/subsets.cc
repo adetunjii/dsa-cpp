@@ -11,7 +11,7 @@ void solve(vector<int>& nums, vector<int> out, int idx) {
     	return;
     }
 
-    solve(nums, out, idx+1);`
+    solve(nums, out, idx+1);
     out.push_back(nums[idx]);
     solve(nums, out, idx+1);
 }

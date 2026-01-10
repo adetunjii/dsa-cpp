@@ -24,10 +24,10 @@ int uniquePaths(int m, int n) {
 	return A[0][n-1];
 }
 
-int main() {
-	int M, N;
-	cin >> M >> N;
-	cout << uniquePaths(M, N) << "\n";
+// int main() {
+// 	int M, N;
+// 	cin >> M >> N;
+// 	cout << uniquePaths(M, N) << "\n";
 
-	return 0;
-}
+// 	return 0;
+// }

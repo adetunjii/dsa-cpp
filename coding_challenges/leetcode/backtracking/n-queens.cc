@@ -37,8 +37,8 @@ void solve(vector<string>& board, int row) {
 }
 
 vector<vector<string>> solveNQueens(int n) {
-	vector<string> board(n, string(n, '.'))
-	solve(board, 0)
+	vector<string> board(n, string(n, '.'));
+	solve(board, 0);
 	return solutions;
 }
 
@@ -53,8 +53,6 @@ int main() {
 			cout << res[i][j] << "\n";
 		}
 	}
-
-	cout << ways << "\n";
 
 	return 0;
 }

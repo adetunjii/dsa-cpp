@@ -30,11 +30,11 @@ public:
       int count = 0, winner = 0, N = nums.size();
 
       for (auto& num : nums) {
-       if(count == 0) {
-         winner = nums[i];
-       }
+        if(count == 0) {
+          winner = num;
+        }
 
-       if (winner == nums[i]) {
+       if (winner == num) {
         count += 1;
        } else {
          count -= 1;
