@@ -31,7 +31,7 @@ namespace dp {
             for (int j : std::views::iota(1, 4)) {
                 if (i - j >= 0) {
                     int cost_at_i = costs[i-1] + (j * j);
-                    dp[i] = std::min(dp[i], cost_at_i + dp[j]);
+                    dp[i] = std::min(dp[i], cost_at_i + dp[i-j]);
                 }
             }
         }
