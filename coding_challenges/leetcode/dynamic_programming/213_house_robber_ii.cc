@@ -17,7 +17,7 @@ namespace dp {
        return dp[N-1];
     }
 
-    int rob(std::vector<int>& nums) {
+    int houseRobberII(std::vector<int>& nums) {
         int N = nums.size();
 
         if (N == 1) return nums[0];
