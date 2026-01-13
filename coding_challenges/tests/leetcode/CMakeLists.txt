@@ -1,5 +1,5 @@
 if(BUILD_TESTING)
-	file(GLOB_RECURSE TEST_FILES "*/*.cc")
+	file(GLOB_RECURSE TEST_FILES "*.cc")
 
 	add_executable(unittests ${TEST_FILES})
 

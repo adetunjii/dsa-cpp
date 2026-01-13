@@ -4,18 +4,16 @@
 
 namespace dp {
 
-    int climbStairsII(int N, std::vector<int>& coins) {
+    int climbStairsII(int N, std::vector<int>& costs) {
         if (N == 0) return 0;
 
         std::vector<int> dp(N+1, 0);
-        dp[0] = 0;
+        dp[1] = costs[0] + 1;
+        for (int i : std::views::iota(2, N+1)) {
+            int val = std::min(dp[i-1] + 1, dp[i-2] + 4);
+            if (i > 2) val = std::min(dp[i-3] + 9, val);
 
-        for (int i : std::views::iota(1, N+1)) {
-            int val = dp[i-1] + 1;
-            if (val > 1) val = std::min(val, dp[i-2] + 4);
-            if (val > 2) val = std::min(val, dp[i-3] + 9);
-
-            dp[i] = val + coins[i-1];
+            dp[i] = val + costs[i-1];
         }
 
         return dp[N];
