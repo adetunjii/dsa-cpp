@@ -12,4 +12,7 @@ namespace dp {
 
     // Partition Subset Sum
     bool canPartition(std::vector<int>& nums);
+
+    // Coin Change
+    int coinChange(std::vector<int>& coins, int amount);
 }
