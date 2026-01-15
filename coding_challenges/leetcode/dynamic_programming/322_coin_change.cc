@@ -11,10 +11,8 @@ namespace dp {
         dp[0] = 0;
 
         for (int i : std::views::iota(0, N)) {
-            for (int c : std::views::iota(1, amount+1)) {
-                if (coins[i] <= c) {
-                    dp[c] = std::min(dp[c], dp[c - coins[i]] + 1);
-                }
+            for (int c = coins[i]; c <= amount; c++) {
+                dp[c] = std::min(dp[c], dp[c - coins[i]] + 1);
             }
         }
 
