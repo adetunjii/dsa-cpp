@@ -16,6 +16,9 @@ namespace dp {
     // Coin Change
     int coinChange(std::vector<int>& coins, int amount);
 
-    // Best time to buy and sell stock II
+    // Best time to buy and sell stock
     int maxProfit(std::vector<int>& prices);
+
+    // Best time to buy and sell stock II
+    int maxProfitII(std::vector<int>& prices);
 }
