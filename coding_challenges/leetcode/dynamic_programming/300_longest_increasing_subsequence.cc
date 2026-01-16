@@ -20,4 +20,23 @@ int lengthOfLIS(std::vector<int>& nums) {
 
     return *std::max_element(dp.begin(), dp.end());
 }
+
+
+int solveLISWithGreedy(std::vector<int>& nums) {
+    int N = nums.size();
+    if(N < 2) return N;
+
+    std::vector<int> sub;
+
+    for (int num : nums) {
+        if (sub.empty() || sub[sub.size() - 1] < num) {
+            sub.push_back(num);
+        } else {
+            auto lower = lower_bound(sub.begin(), sub.end(), num);
+            *lower = num;
+        }
+    }
+
+    return sub.size();
+}
 }
