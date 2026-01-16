@@ -21,7 +21,6 @@ int lengthOfLIS(std::vector<int>& nums) {
     return *std::max_element(dp.begin(), dp.end());
 }
 
-
 int solveLISWithGreedy(std::vector<int>& nums) {
     int N = nums.size();
     if(N < 2) return N;
