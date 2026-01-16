@@ -16,12 +16,15 @@ int findNumberOfLIS(std::vector<int>& nums) {
     for (int i : std::views::iota(1, N)) {
         for (int j : std::views::iota(0, i)) {
             if (nums[i] > nums[j]) {
-                if (length[i] < length[j] + 1) {
-                    length[i] = length[j] + 1;
-                    count[i] = count[j];
-                } else {
+                if (length[i] == length[j] + 1) {
                     count[i] += count[j];
                 }
+
+                if (length[i] < length[j] + 1) {
+                    length[i] = length[j] + 1;
+                    count[i] = count[j]; // expanding the subsequence;
+                }
+
             }
         }
 
