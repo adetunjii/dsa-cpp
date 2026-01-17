@@ -24,7 +24,6 @@ int findNumberOfLIS(std::vector<int>& nums) {
                     length[i] = length[j] + 1;
                     count[i] = count[j]; // expanding the subsequence;
                 }
-
             }
         }
 

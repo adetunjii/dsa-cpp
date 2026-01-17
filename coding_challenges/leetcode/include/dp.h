@@ -24,4 +24,7 @@ namespace dp {
 
     // Best time to buy and sell stock II
     int maxProfitII(std::vector<int>& prices);
+
+    // Last Stone Weight II
+    int lastStoneWeightII(std::vector<int>& stones);
 }
