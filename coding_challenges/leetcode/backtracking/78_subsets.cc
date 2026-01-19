@@ -1,25 +1,23 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
+std::vector<std::vector<int>> res;
 
-vector<vector<int>>res;
+void dfs(std::vector<int>& nums, std::vector<int>& subset, int idx) {
+	if (idx >= nums.size()) {
+		res.push_back(subset);
+		return;
+	}
 
-void solve(vector<int>& nums, vector<int> out, int idx) {
-    if (idx >= nums.size()) {
-    	res.push_back(out);
-    	return;
-    }
-
-    solve(nums, out, idx+1);
-    out.push_back(nums[idx]);
-    solve(nums, out, idx+1);
+	dfs(nums, subset, idx+1);
+	subset.push_back(nums[idx]);
+	dfs(nums, subset, idx+1);
 }
 
 vector<vector<int>> subsets(vector<int>& nums) {
-    vector<int> out;
-    solve(nums, out, 0);
-    return res; 
+	vector<int> subset;
+	dfs(nums, subset, 0);
+	return res;
 }
 
 

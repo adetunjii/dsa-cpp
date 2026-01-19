@@ -5,7 +5,7 @@
 
 namespace dp {
     int lastStoneWeightII(std::vector<int>& stones) {
-           int N = stones.size();
+        int N = stones.size();
         if(N < 2) return 0;
 
         int total = std::accumulate(stones.begin(), stones.end(), 0);
