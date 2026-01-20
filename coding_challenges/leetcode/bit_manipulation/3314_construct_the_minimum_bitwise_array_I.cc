@@ -23,4 +23,21 @@ namespace bitwiseOp{
 		return ans;
 
 	}	
+
+	vector<int> minBitwiseArrayOptimized(vector<int>& nums) {
+		int N = nums.size();
+
+		std::vector<int> ans(N, 0);
+
+		for (int num : nums) {
+			if (num & 1) {
+				int z = ((num+1) & ~z) >> 1;
+				ans[i] = num & ~z;
+			} else {
+				ans[i] = -1;
+			}
+		}
+
+		return res;
+	}
 }
