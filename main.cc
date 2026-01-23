@@ -1,41 +1,38 @@
 #include <iostream>
 #include <vector>
 #include <print>
+#include <ranges>
 #include <algorithm>
 #include <functional>
 
+
+void dfs(std::vector<int>& nums, int idx, std::vector<std::vector<int>>& res, std::vector<int>& subset) {
+	int N = nums.size();
+	if (idx >= N) {
+		res.push_back(subset);
+		return;
+	}
+
+	subset.push_back(nums[idx]);
+	dfs(nums, idx+1, res, subset);
+
+	subset.pop_back();
+	dfs(nums, idx+1, res, subset);
+}
+
 int main(int argc, char* argv[]) {
-	std::vector<int> V = {1, 2, 3, 8, 0, 4, 5, 9};
+	std::vector<int> nums = {1, 2, 3};
+	std::vector<std::vector<int>> res;
+	std::vector<int> subset;
 
-	auto lessThanFunc = [](int a, int b) { return a < b; };
+	dfs(nums, 0, res, subset);
 
-	auto printFunc = [](auto& item) { std::print("{}, ", item); };
+	for (int i = 0; i < res.size(); i++) {
+		for (int j = 0; j < res[i].size(); j++) {
+			std::cout << "{" << res[i][j] << "} ";
+		}
+		std::cout << '\n'; 
+	}
 
-	// Sorting with Lambda
-	std::sort(std::begin(V), std::end(V), lessThanFunc);
-	std::print("Sorted with a Lambda function: ");
-	std::ranges::for_each(V, printFunc);
-	std::println();
-
-	// Sorting with functors
-	struct {
-		inline bool operator() (int a, int b) { return a < b ; }
-	} customLessThan;
-
-	std::print("Sorted with a Functor: ");
-	std::sort(std::begin(V), std::end(V), customLessThan);
-	std::ranges::for_each(V, printFunc);
-	std::println();
-
-	// Sorting with stdlib compare functions
-	std::sort(std::begin(V), std::end(V), std::less<int>());
-	std::print("Sorted with stdlib compare function: ");
-	std::ranges::for_each(V, printFunc);
-	std::println();
-
-	// Don't like iterators, use range-based sorting. 
-	std::ranges::sort(V, lessThanFunc);
-	std::print("Sorted using range-based sorting + lambda: ");
-	std::ranges::for_each(V, printFunc);
-	std::println();
+	return 0;
 }
