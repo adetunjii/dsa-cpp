@@ -2,7 +2,7 @@
 #include <ranges>
 
 namespace bitwiseOp{
-	vector<int> minBitwiseArray(vector<int>& nums) {
+	std::vector<int> minBitwiseArray(std::vector<int>& nums) {
 		int N = nums.size();
 
 		// 1001 being the maximum nums[i] there can be.
@@ -12,7 +12,7 @@ namespace bitwiseOp{
 		for (int i : std::views::iota(0, N)) {
 			for (int j : std::views::iota(0, nums[i] + 1)) {
 				if ((j | (j+1)) == nums[i]) {
-					ans[i] = min(ans[i], j);
+					ans[i] = std::min(ans[i], j);
 				}
 			}
 
@@ -24,20 +24,20 @@ namespace bitwiseOp{
 
 	}	
 
-	vector<int> minBitwiseArrayOptimized(vector<int>& nums) {
+	std::vector<int> minBitwiseArrayOptimized(std::vector<int>& nums) {
 		int N = nums.size();
 
 		std::vector<int> ans(N, 0);
 
-		for (int num : nums) {
-			if (num & 1) {
-				int z = ((num+1) & ~z) >> 1;
-				ans[i] = num & ~z;
+		for (int i : std::views::iota(0, N)) {
+			if (nums[i] & 1) {
+				int z = ((nums[i]+1) & ~z) >> 1;
+				ans[i] = nums[i] & ~z;
 			} else {
 				ans[i] = -1;
 			}
 		}
 
-		return res;
+		return ans;
 	}
 }
