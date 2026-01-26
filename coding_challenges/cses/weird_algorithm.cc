@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void solve(long long n)
+void weirdAlgorithm(long long n)
 {
 	while (n != 1)
 	{
@@ -13,15 +13,15 @@ void solve(long long n)
 	cout << n << "\n";
 }
 
-int main()
-{
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	cout.tie(nullptr);
+// int main()
+// {
+// 	ios_base::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 	cout.tie(nullptr);
 
-	int N;
-	cin >> N;
+// 	int N;
+// 	cin >> N;
 
-	solve(N);
-	return 0;
-}
+// 	solve(N);
+// 	return 0;
+// }
