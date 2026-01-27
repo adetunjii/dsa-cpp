@@ -13,7 +13,7 @@ namespace cses {
 		int M = 10e9+7;
 
 		for (int i : std::views::iota(1, N+1)) {
-			for(int c : std::views::iota(1, 7)) {
+			for(int c : std::views::iota(1, N+1)) {
 				if (i >= c) {
 					dp[i] = (dp[i] + dp[i-c]) % M;
 				}
