@@ -15,4 +15,7 @@ namespace cses {
 
 	// Dynamic programming - Coin combinations I
 	int coinCombinationI(std::vector<int>& coins, ll target);
+
+	// Dynamic programming - Coin combinations II
+	int coinCombinationII(std::vector<int>& coins, ll target);
 }
