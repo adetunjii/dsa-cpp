@@ -21,4 +21,7 @@ namespace cses {
 
 	// Dynamic programming - Money Sums
 	std::vector<int> moneySums(std::vector<int>& coins);
+
+	// Dynamic Programming - IncreasingSubsequenceII
+	int increasingSubsequenceII(std::vector<int>& nums);
 }
