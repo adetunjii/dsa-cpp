@@ -2,7 +2,7 @@
 #include <vector>
 
 namespace graph {
-        void fill(std::vector<std::vector<int>>& image, int sr, int sc, int color, int newColor) {
+    void fill(std::vector<std::vector<int>>& image, int sr, int sc, int color, int newColor) {
         if (
             (sr < 0 || sr >= image.size() || 
             sc < 0 || sc >= image[0].size()) || 
