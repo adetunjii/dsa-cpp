@@ -4,8 +4,7 @@
 
 using namespace std;
 
-class Solution {
-public:
+namespace stack{
     bool isValid(string s) {
         unordered_map<char, char> m = {
             {'{', '}'},
