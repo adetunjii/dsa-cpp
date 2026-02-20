@@ -34,7 +34,6 @@ namespace stack {
                     if (op == '*' || op == '/') {
                         int x = st.top();
                         st.pop();
-
                         (op == '*') ? st.push(num * x) : st.push(x/num);
                     } else if (op == '+') {
                         st.push(num);
