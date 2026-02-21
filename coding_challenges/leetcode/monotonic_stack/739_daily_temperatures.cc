@@ -28,4 +28,26 @@ namespace monotonic_stack {
 
         return answer;
     }
+
+    std::vector<int> dailyTemperaturesWithStack(std::vector<int>& temperatures) {
+        const int N = temperatures.size();
+        if (N == 0) return {};
+
+        std::stack<int> st;
+        std::vector<int> res(N, 0);
+
+        for (int i = N-1; i >= 0; i--) {
+            while(!st.empty() && temperatures[i] >= temperatures[st.top()]) {
+                st.pop();
+            }
+
+            if (!st.empty()) {
+                res[i] = st.top() - i;
+            }
+
+            st.push(i);
+        }
+
+        return res;
+    }
 }
