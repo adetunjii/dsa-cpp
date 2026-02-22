@@ -1,26 +1,30 @@
 #include <vector>
 #include <utility>
 #include <stack>
+#include <ranges>
 
 namespace monotonic_stack {
     bool find132pattern(std::vector<int>& nums) {
-        // 1. stack is a monotonically decreasing stack that holds currentNumber and the min encountered so far
         int N = nums.size();
+        if (N == 0) return false;
+
         std::stack<std::pair<int, int>> st;
 
         int currentMin = nums[0];
 
-        for (int i = 1; i < N; i++) {
-            while(!st.empty() && nums[i] >= st.top().first) {
+        for (int i : std::views::iota(0, N)) {
+            int k = nums[i];
+
+            while(!st.empty() && k >= st.top().first) {
                 st.pop();
             }
 
-            if (!st.empty() && nums[i] > st.top().second) {
+            if (!st.empty() && k > st.top().second) {
                 return true;
             }
 
-            st.push({nums[i], currentMin});
-            currentMin = std::min(currentMin, nums[i]);
+            st.push({k, currentMin});
+            currentMin = std::min(currentMin, k);
         }
 
         return false;
