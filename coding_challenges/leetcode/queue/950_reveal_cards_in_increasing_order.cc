@@ -5,7 +5,6 @@
 namespace queue {
     std::vector<int> deckRevealedIncreasing(std::vector<int>& deck) {
         const int N = deck.size();
-
         if (N == 0) return {};
 
         sort(deck.begin(), deck.end());
@@ -27,5 +26,4 @@ namespace queue {
 
         return res;
     }
-
 }

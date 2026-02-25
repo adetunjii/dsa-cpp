@@ -6,6 +6,7 @@
 namespace monotonic_stack {
     bool find132pattern(std::vector<int>& nums) {
         int N = nums.size();
+        
         if (N == 0) return false;
 
         std::stack<std::pair<int, int>> st;
