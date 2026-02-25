@@ -2,12 +2,12 @@
 #include <unordered_set>
 
 namespace matrix {
-    inline void sweepRow(std::vector<std::vector<int>>& matrix, int row) {
+    static inline void sweepRow(std::vector<std::vector<int>>& matrix, int row) {
         int numCols = matrix[0].size();
         std::fill(matrix[row].begin(), matrix[row].end(), 0);
     }
 
-    inline void sweepCol(std::vector<std::vector<int>>& matrix, int col) {
+    static inline void sweepCol(std::vector<std::vector<int>>& matrix, int col) {
         int numRows = matrix.size();
         for (auto& row : matrix) {
             row[col] = 0;
