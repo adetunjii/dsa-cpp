@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <ranges>
 
 using namespace std;
 
@@ -19,6 +20,32 @@ public:
             ms.insert(nums[i]); // expand the window
         }
         res.push_back(*ms.rbegin()); // find the max value again since we're only inserting after after we've handled previous window.
+        return res;
+    }
+
+
+    vector<int> maxSlidingWindowBruteForce(vector<int>& nums, int k) {
+        int N = nums.size();
+        if (N == 0) return {};
+
+        vector<int> res;
+
+        int left = 0, right = k;
+
+        while (right <= N) {
+            int currentMin = INT_MIN;
+            
+            int i = left; 
+            for (int i : std::views::iota(left, right)) {
+                currentMin = max(currentMin, nums[i]);
+            }
+
+            res.push_back(currentMin);
+
+            left += 1;
+            right += 1;
+        }
+
         return res;
     }
 };
