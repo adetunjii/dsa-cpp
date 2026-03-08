@@ -2,6 +2,7 @@
 #include <vector>
 #include <set>
 #include <ranges>
+#include <deque>
 
 using namespace std;
 
@@ -23,7 +24,6 @@ public:
         return res;
     }
 
-
     vector<int> maxSlidingWindowBruteForce(vector<int>& nums, int k) {
         int N = nums.size();
         if (N == 0) return {};
@@ -44,6 +44,39 @@ public:
 
             left += 1;
             right += 1;
+        }
+
+        return res;
+    }
+
+    vector<int> maxSlidingWindowDeque(vector<int>& nums, int k) {
+        int N = nums.size();
+
+        deque<int> q;
+        vector<int> res;
+        res.reserve(N - k + 1);
+
+        for (int i = 0; i < k; i++) {
+            while (!q.empty() && nums[i] > nums[q.back()]) {
+                q.pop_back();
+            }
+            q.push_back(i);
+        }
+
+        res.push_back(nums[q.front()]);
+
+        for (int i = k; i < N; i++) {
+            while (!q.empty() && nums[i] > nums[q.back()]) {
+                q.pop_back();
+            }
+            
+            q.push_back(i);
+
+            if (!q.empty() && q.front() == i-k) {
+                q.pop_front();
+            }
+            
+            res.push_back(nums[q.front()]);
         }
 
         return res;
