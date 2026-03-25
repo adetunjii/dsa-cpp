@@ -10,12 +10,12 @@ int numSquares(int N) {
         squares.push_back(i * i);
         i += 1;
     }
-    int n = squares.size();
+    int squaresLen = squares.size();
     
     std::vector<int> dp(N+1, N+1);
     dp[0] = 0;
 
-    for (int i : std::views::iota(1, n+1)) {
+    for (int i : std::views::iota(1, squaresLen+1)) {
         for (int c : std::views::iota(1, N + 1)) {
             if (squares[i-1] <= c)
                 dp[c] = std::min(dp[c], dp[c-squares[i-1]] + 1);
