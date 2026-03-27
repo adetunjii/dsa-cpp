@@ -31,7 +31,7 @@ int lengthOfLISOptimized(std::vector<int>& nums) {
         if (nums[i] > dp.back()) {
             dp.push_back(nums[i]);
         } else {
-            int lower = std::lower_bound(dp.begin(), dp.end(), nums[i]);
+            auto lower = std::lower_bound(dp.begin(), dp.end(), nums[i]);
             *lower = nums[i];
         }
     }
