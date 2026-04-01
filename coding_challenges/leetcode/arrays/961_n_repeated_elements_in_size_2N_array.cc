@@ -21,7 +21,6 @@ public:
 
             vec[nums[i]] = nums[i];
         }
-
         return -1;
     }
 };
