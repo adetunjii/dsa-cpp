@@ -5,11 +5,11 @@
 int furthestBuilding(std::vector<int>& heights, int bricks, int ladders) {
         int N = heights.size();
 
-        auto cmp = [&](int a, int b) {
-            return a > b;
+        auto cmp = [](int a, int b) {
+            return a < b;
         };
 
-        std::priority_queue<int> pq;
+        std::priority_queue<int, std::vector<int>, decltype(cmp)> pq;
 
         int count = 0;
 
