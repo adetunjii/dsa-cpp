@@ -1,6 +1,6 @@
 #include <vector>
-#include <queue>
 #include <ranges>
+#include <queue>
 
 typedef std::pair<int, int> P;
 
@@ -11,23 +11,23 @@ std::vector<int> getOrder(std::vector<std::vector<int>>& tasks) {
 
     std::vector<int> res;
     res.reserve(N);
-    long running_time = 0, i = 0;
 
-    for (int i : std::views::iota(0, N)) tasks[i].push_back(i);
+    long running_time = 0;
+    int idx = 0;
 
-    std::sort(tasks.begin(), tasks.end());
+    for (int i : std::views::iota(0, N)) tasks[i].push_back(i); // each item in the tasks array now has [enqueue_time, processing_time, task_idx]
 
-    while (i < N || pq.size() > 0) {
-        if (pq.empty()) {
-            running_time = std::max(running_time, (long)tasks[i][0]);
+    while (idx < N || pq.size() > 0) {
+        if (pq.empty() && tasks[idx][0] < running_time) {
+            running_time = (long)tasks[idx][0];
         }
 
-        while (i < N || running_time >= tasks[i][0]) {
-            pq.emplace(tasks[i][1], tasks[i][2]);
-            i += 1;
+        while (idx < N && running_time >= tasks[idx][0]) {
+            pq.emplace(tasks[idx][1], tasks[idx][2]);
+            idx += 1;
         }
 
-        running_time += (pq.top().first);
+        running_time += pq.top().first;
         res.push_back(pq.top().second);
         pq.pop();
     }
