@@ -20,7 +20,7 @@ std::vector<int> getOrder(std::vector<std::vector<int>>& tasks) {
     std::sort(tasks.begin(), tasks.end());
 
     while (idx < N || pq.size() > 0) {
-        if (pq.empty() && tasks[idx][0] < running_time) {
+        if (pq.empty() && running_time < tasks[idx][0]) {
             running_time = (long)tasks[idx][0];
         }
 
