@@ -17,6 +17,8 @@ std::vector<int> getOrder(std::vector<std::vector<int>>& tasks) {
 
     for (int i : std::views::iota(0, N)) tasks[i].push_back(i); // each item in the tasks array now has [enqueue_time, processing_time, task_idx]
 
+    std::sort(tasks.begin(), tasks.end());
+
     while (idx < N || pq.size() > 0) {
         if (pq.empty() && tasks[idx][0] < running_time) {
             running_time = (long)tasks[idx][0];
