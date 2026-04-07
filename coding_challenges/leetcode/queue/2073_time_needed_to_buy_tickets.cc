@@ -1,4 +1,6 @@
 #include <queue>
+#include <ranges>
+#include <vector>
 
 namespace queue {
     int timeRequiredToBuy(std::vector<int>& tickets, int k) {
@@ -26,5 +28,20 @@ namespace queue {
         }
 
         return count;
+    }
+
+    int timeRequiredToBuyOptimal(std::vector<int>& tickets, int k) {
+        int N = tickets.size();
+        int total_time = 0;
+
+        for (int i : std::views::iota(0, N)) {
+            if (i <= k) {
+                total_time += std::min(tickets[i], tickets[k]);
+            } else {
+                total_time += std::min(tickets[i], tickets[k] - 1);
+            }
+        }
+
+        return total_time;
     }
 }
