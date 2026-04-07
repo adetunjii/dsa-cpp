@@ -1,13 +1,14 @@
 #include <queue>
 #include <vector>
 #include <ranges>
+#include <algorithm>
 
 namespace queue {
     std::vector<int> deckRevealedIncreasing(std::vector<int>& deck) {
         const int N = deck.size();
         if (N == 0) return {};
 
-        sort(deck.begin(), deck.end());
+        std::sort(deck.begin(), deck.end());
         
         std::queue<int> q;
         std::vector<int> res(N, 0);
