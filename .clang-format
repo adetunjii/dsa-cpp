@@ -1,0 +1,26 @@
+---
+Language: Cpp
+ColumnLimit: 100
+IndentWidth: 4
+TabWidth: 4
+Standard: Latest
+AccessModifierOffset: -4
+AlignTrailingComments: true
+AlwaysBreakTemplateDeclarations: Yes
+AllowShortBlocksOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: true
+BreakBeforeBraces: Attach
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: false
+  AfterFunction: false
+  IndentBraces: false
+  AfterNamespace: false
+SplitEmptyNamespace: true
+FixNamespaceComments: true
+MaxLinesToKeepEmpty: 2
+---
