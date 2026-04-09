@@ -5,6 +5,7 @@ IndentWidth: 4
 TabWidth: 4
 Standard: Latest
 AccessModifierOffset: -4
+AlignOperands: false
 AlignTrailingComments: true
 AlwaysBreakTemplateDeclarations: Yes
 AllowShortBlocksOnASingleLine: Never
@@ -20,7 +21,9 @@ BraceWrapping:
   AfterFunction: false
   IndentBraces: false
   AfterNamespace: false
-SplitEmptyNamespace: true
+DerivePointerAlignment: false
 FixNamespaceComments: true
 MaxLinesToKeepEmpty: 2
+PointerAlignment: Left
+SplitEmptyNamespace: true
 ---
