@@ -11,44 +11,39 @@ void solve() {
     cin >> N;
 
     vector<pair<int, int>> vec;
-
-    for (int i : views::iota(0, N)) {
+    for (int i : std::views::iota(0, N)) {
         int A, B;
         cin >> A >> B;
         vec.emplace_back(A, B);
     }
 
-    // sort ranges
     sort(vec.begin(), vec.end());
 
     int idx = 0;
     int box = 1;
     int placed = 0;
 
-    priority_queue<int, std::vector<int>, std::greater<>> pq;
+    priority_queue<int, vector<int>, greater<>> waitList;
 
     while (placed < N) {
         while (idx < N && box == vec[idx].first) {
-            pq.push(vec[idx].second);
+            waitList.push(vec[idx].second);
             idx += 1;
         }
 
-        if (pq.empty()) {
-            if (idx < N) {
-                box = vec[idx].first;
-                continue;
-            } else {
-                cout << "No" << '\n';
-                return;
-            }
+        // don't wait idle
+        if (waitList.empty() && idx < N && box < vec[idx].first) {
+            box = vec[idx].first;
+            continue;
         }
 
-        int r = pq.top();
-        if (box > r) {
+        if (box > waitList.top()) {
             cout << "No" << '\n';
             return;
         }
-        pq.pop();
+
+        waitList.pop();
+
         placed += 1;
         box += 1;
     }
