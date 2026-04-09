@@ -1,6 +1,8 @@
-#include <vector>
-#include <ranges>
+#include <algorithm>
 #include <queue>
+#include <ranges>
+#include <utility>
+#include <vector>
 
 typedef std::pair<int, int> P;
 
@@ -15,7 +17,9 @@ std::vector<int> getOrder(std::vector<std::vector<int>>& tasks) {
     long running_time = 0;
     int idx = 0;
 
-    for (int i : std::views::iota(0, N)) tasks[i].push_back(i); // each item in the tasks array now has [enqueue_time, processing_time, task_idx]
+    for (int i : std::views::iota(0, N))
+        tasks[i].push_back(
+            i); // each item in the tasks array now has [enqueue_time, processing_time, task_idx]
 
     std::sort(tasks.begin(), tasks.end());
 
