@@ -31,7 +31,6 @@ void solve() {
             idx += 1;
         }
 
-        // don't wait idle
         if (waitList.empty() && idx < N && box < vec[idx].first) {
             box = vec[idx].first;
             continue;
