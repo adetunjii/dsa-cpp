@@ -1,38 +1,25 @@
-#include <iostream>
-#include <vector>
-#include <print>
-#include <ranges>
 #include <algorithm>
 #include <functional>
+#include <iostream>
+#include <print>
+#include <ranges>
+#include <vector>
 
+using namespace std;
 
-void dfs(std::vector<int>& nums, int idx, std::vector<std::vector<int>>& res, std::vector<int>& subset) {
-	int N = nums.size();
-	if (idx >= N) {
-		res.push_back(subset);
-		return;
-	}
+int main() {
+    int f[3] = {3, 2, 1};
+    int g[5] = {1, 2, 3, 4, 5};
 
-	subset.push_back(nums[idx]);
-	dfs(nums, idx+1, res, subset);
+    // find the convolution after the 3rd day
+    int days = 3;
+    for (int x = 0; x < days; x++) {
+        int sum = 0;
 
-	subset.pop_back();
-	dfs(nums, idx+1, res, subset);
-}
-
-int main(int argc, char* argv[]) {
-	std::vector<int> nums = {1, 2, 3};
-	std::vector<std::vector<int>> res;
-	std::vector<int> subset;
-
-	dfs(nums, 0, res, subset);
-
-	for (int i = 0; i < res.size(); i++) {
-		for (int j = 0; j < res[i].size(); j++) {
-			std::cout << "{" << res[i][j] << "} ";
-		}
-		std::cout << '\n'; 
-	}
-
-	return 0;
+        for (int i = 0; i < 5; i++) {
+            if (i < x) {
+            }
+            sum += f[i] + g[-i + x];
+        }
+    }
 }
