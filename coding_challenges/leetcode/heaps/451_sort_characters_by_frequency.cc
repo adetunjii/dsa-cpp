@@ -30,9 +30,7 @@ string frequencySort(string s) {
 
     string res = "";
     while (!pq.empty()) {
-        for (int i : std::views::iota(0, pq.top().second)) {
-            res += pq.top().first;
-        }
+        res += string(pq.top().second, pq.top().first);
         pq.pop();
     }
 
