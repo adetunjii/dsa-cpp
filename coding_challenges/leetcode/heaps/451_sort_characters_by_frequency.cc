@@ -22,11 +22,8 @@ string frequencySort(string s) {
         return A.second < B.second;
     };
 
-    std::priority_queue<pair<char, int>, vector<pair<char, int>>, decltype(cmp)> pq;
-
-    for (auto& [key, val] : m) {
-        pq.emplace(key, val);
-    }
+    std::priority_queue<pair<char, int>, vector<pair<char, int>>, decltype(cmp)> pq(m.begin(),
+                                                                                    m.end());
 
     string res = "";
     while (!pq.empty()) {
