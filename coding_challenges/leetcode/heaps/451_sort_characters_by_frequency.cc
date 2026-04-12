@@ -8,28 +8,26 @@ using namespace std;
 string frequencySort(string s) {
     int N = s.size();
 
-    map<char, int> m;
+    vector<int> vec(256, 0);
 
-    for (auto& c : s) {
-        if (m.count(c) == 0) {
-            m.insert({c, 1});
-        } else {
-            m[c] += 1;
+    for (int i : std::views::iota(0, 256)) {
+        vec[s[i]]++;
+    }
+
+    std::priority_queue<pair<int, int>> pq;
+
+    for (int i : std::views::iota(0, 256)) {
+        pq.emplace(vec[i], i);
+    }
+
+    int k = 0;
+    while (!pq.empty()) {
+        auto [cnt, ch] = pq.top();
+
+        while (cnt-- > 0) {
+            s[k++] = ch;
         }
     }
 
-    auto cmp = [](pair<char, int> A, pair<char, int> B) {
-        return A.second < B.second;
-    };
-
-    std::priority_queue<pair<char, int>, vector<pair<char, int>>, decltype(cmp)> pq(m.begin(),
-                                                                                    m.end());
-
-    string res = "";
-    while (!pq.empty()) {
-        res += string(pq.top().second, pq.top().first);
-        pq.pop();
-    }
-
-    return res;
+    return s;
 }
