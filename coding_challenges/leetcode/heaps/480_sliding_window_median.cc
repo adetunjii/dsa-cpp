@@ -1,16 +1,17 @@
 #include <map>
 #include <queue>
+#include <ranges>
 #include <vector>
 
 std::vector<double> medianSlidingWindow(std::vector<int>& nums, int k) {
     int N = nums.size();
 
-    std::priority_queue<double> maxHeap;
-    std::priority_queue<double, std::vector<double>, std::greater<double>> minHeap;
+    std::priority_queue<long> maxHeap;
+    std::priority_queue<long, std::vector<long>, std::greater<long>> minHeap;
     std::vector<double> res;
     std::map<double, int> m;
 
-    for (int i = 0; i < k; i++) {
+    for (int i : std::views::iota(0, k)) {
         maxHeap.push(nums[i]);
         minHeap.push(maxHeap.top());
         maxHeap.pop();
@@ -31,7 +32,7 @@ std::vector<double> medianSlidingWindow(std::vector<int>& nums, int k) {
     res.push_back(previousMedian);
 
     int balance = 0;
-    for (int r = k; r < N; r++) {
+    for (int r : std::views::iota(k, N)) {
         int l = r - k;
 
         m[nums[l]] += 1;
