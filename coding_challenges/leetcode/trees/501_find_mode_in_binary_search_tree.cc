@@ -42,3 +42,33 @@ vector<int> findMode(TreeNode* root) {
 
     return result;
 }
+
+int maxCount = 0;
+unordered_map<int, int> m;
+vector<int> result;
+
+void inorder(TreeNode* root) {
+    if (root == nullptr) return;
+
+    inorder(root->left);
+
+    if (m.count(root->val) > 0) {
+        m[root->val] += 1;
+    } else {
+        m[root->val] = 1;
+    }
+
+    if (m[root->val] > maxCount) {
+        result = {root->val};
+        maxCount = m[root->val];
+    } else if (m[root->val] == maxCount) {
+        result.push_back(root->val);
+    }
+
+    inorder(root->right);
+}
+
+vector<int> findModeInOrder(TreeNode* root) {
+    inorder(root);
+    return result;
+}
