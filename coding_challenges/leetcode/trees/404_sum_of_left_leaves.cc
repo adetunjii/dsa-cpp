@@ -10,8 +10,6 @@ void preorder(TreeNode* root, std::vector<int>& res) {
         preorder(root->left, res);
         preorder(root->right, res);
     }
-
-
 }
 
 int sumOfLeftLeaves(TreeNode* root) {
