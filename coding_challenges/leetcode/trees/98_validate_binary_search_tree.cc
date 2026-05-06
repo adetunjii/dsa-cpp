@@ -5,69 +5,64 @@
 
 using namespace std;
 
-class Solution {
-public:
-    bool isValidBST(TreeNode* root) {
-        if (root == nullptr) return true;
 
-        stack<TreeNode*> st;
-        vector<int> nums;
+bool isValidBST(TreeNode* root) {
+    if (root == nullptr) return true;
 
-        while(root != nullptr || !st.empty()) {
-            if (root != nullptr) {
-                st.push(root);
-                root = root->left;
-            } else {
-                TreeNode* top = st.top();
-                st.pop();
+    stack<TreeNode*> st;
+    vector<int> nums;
 
-                nums.push_back(top->val);
-                root = top->right;
-            }
+    while(root != nullptr || !st.empty()) {
+        if (root != nullptr) {
+            st.push(root);
+            root = root->left;
+        } else {
+            TreeNode* top = st.top();
+            st.pop();
+
+            nums.push_back(top->val);
+            root = top->right;
         }
-        
-        int N = nums.size();
-        for (int i : std::views::iota(0, N-1)) {
-            if (nums[i] > nums[i-1]) return false;
-        }
-        
-        return true;
     }
     
-    bool isBST(TreeNode* node, long long min, long long max) {
-        if (node == nullptr) return true;
+    int N = nums.size();
+    for (int i : std::views::iota(0, N-1)) {
+        if (nums[i] > nums[i-1]) return false;
+    }
+    
+    return true;
+}
 
-        if (node->val > min && node->val < max) {
-            bool left = isBST(node->left, min, node->val);
-            bool right = isBST(node->right, node->val, max);
+bool isBST(TreeNode* node, long long min, long long max) {
+    if (node == nullptr) return true;
 
-            return left && right;
-        }
+    if (node->val > min && node->val < max) {
+        bool left = isBST(node->left, min, node->val);
+        bool right = isBST(node->right, node->val, max);
 
-        return false;
+        return left && right;
     }
 
-    bool isValidBSTRecursive(TreeNode* root) {
-        if (root == nullptr) return true;
-        return isBST(root, numeric_limits<long long>::min(), numeric_limits<long long>::max());
-    }
+    return false;
+}
 
-    bool inorder(TreeNode* node, long& prev) {
-        if (node == nullptr) return true;
+bool isValidBSTRecursive(TreeNode* root) {
+    if (root == nullptr) return true;
+    return isBST(root, numeric_limits<long long>::min(), numeric_limits<long long>::max());
+}
 
-        if (!inorder(node->left, prev)) return false;
-        if (node->val <= prev) return false;
-        prev = node->val;
-        if (!inorder(node->right, prev)) return false;
+bool inorder(TreeNode* node, long& prev) {
+    if (node == nullptr) return true;
 
-        return true;
-    }
+    if (!inorder(node->left, prev)) return false;
+    if (node->val <= prev) return false;
+    prev = node->val;
+    if (!inorder(node->right, prev)) return false;
 
+    return true;
+}
 
-    bool isValidBSTInorder(TreeNode* root) {
-        long prev = std::numeric_limits<long>::min();
-        return inorder(root, prev);
-    }
-};
-
-
+bool isValidBSTInorder(TreeNode* root) {
+    long prev = std::numeric_limits<long>::min();
+    return inorder(root, prev);
+}
