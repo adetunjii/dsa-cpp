@@ -3,7 +3,6 @@
 
 void inorder(TreeNode* root, std::vector<int>& nums) {
     if (root == nullptr) return;
-
     inorder(root->left, nums);
     nums.push_back(root->val);
     inorder(root->right, nums);
