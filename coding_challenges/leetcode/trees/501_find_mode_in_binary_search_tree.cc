@@ -1,6 +1,11 @@
-#include <vector>
-#include <unordered_map>
 #include "treenode.h"
+#include <algorithm>
+#include <limits>
+#include <numeric>
+#include <unordered_map>
+#include <vector>
+
+using namespace std;
 
 class FindMode {
 public:
@@ -11,7 +16,8 @@ public:
     TreeNode* node = nullptr;
 
     void preorder(TreeNode* root, std::vector<int>& vec) {
-        if (root == nullptr) return;
+        if (root == nullptr)
+            return;
 
         vec.push_back(root->val);
         preorder(root->left, vec);
@@ -33,14 +39,13 @@ public:
             }
         }
 
-        int currentMaxCount = INT_MIN;
+        int currentMaxCount = -1000001;
         vector<int> result;
         for (auto [key, val] : m) {
             if (val > currentMaxCount) {
                 currentMaxCount = val;
             }
         }
-        
 
         for (auto [key, val] : m) {
             if (val == currentMaxCount) {
@@ -52,7 +57,8 @@ public:
     }
 
     void inorderWithMap(TreeNode* root) {
-        if (root == nullptr) return;
+        if (root == nullptr)
+            return;
 
         inorderWithMap(root->left);
 
@@ -96,7 +102,6 @@ public:
 
         inorderOptimal(root->right);
     }
-
 
     vector<int> findModeInOrder(TreeNode* root) {
         inorderOptimal(root);
