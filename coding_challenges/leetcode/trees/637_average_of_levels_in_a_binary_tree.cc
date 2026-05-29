@@ -8,19 +8,26 @@ std::vector<double> averageOfLevels(TreeNode* root) {
         return {};
     }
 
-    queue<int> q;
-    vector<double> res;
+    std::queue<TreeNode*> q;
+    std::vector<double> res;
+
+    q.push(root);
 
     while (!q.empty()) {
         int levelSize = q.size();
 
-        int levelSum = 0;
+        double levelSum = 0;
 
         for (int i : std::views::iota(0, levelSize)) {
-            int top = q.front();
+            auto top = q.front();
             q.pop();
 
-            levelSum += top;
+            levelSum += top->val;
+
+            if (top->left != nullptr)
+                q.push(top->left);
+            if (top->right != nullptr)
+                q.push(top->right);
         }
 
         res.push_back(levelSum / levelSize);
