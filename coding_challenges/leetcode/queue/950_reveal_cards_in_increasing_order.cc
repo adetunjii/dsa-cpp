@@ -24,7 +24,6 @@ namespace queue {
                 q.pop();
             }
         }
-
         return res;
     }
 }
