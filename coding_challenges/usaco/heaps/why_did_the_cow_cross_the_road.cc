@@ -6,12 +6,12 @@
 
 using namespace std;
 
-int solve(vector<int>& chickens, vector<pair<int, int>> cows) {
+int solve(std::vector<int>& chickens, std::vector<std::pair<int, int>> cows) {
     int M = cows.size();
 
     int idx = 0, count = 0;
 
-    priority_queue<int, vector<int>, greater<>> waitList;
+    std::priority_queue<int, std::vector<int>, std::greater<>> waitList;
 
     for (int& c : chickens) {
         while (idx < M && c >= cows[idx].first) {
@@ -42,8 +42,8 @@ int main() {
     int numChickens, numCows;
     fin >> numChickens >> numCows;
 
-    vector<int> chickens(numChickens);
-    vector<pair<int, int>> cows(numCows);
+    std::vector<int> chickens(numChickens);
+    std::vector<std::pair<int, int>> cows(numCows);
 
     for (auto& chicken : chickens) {
         fin >> chicken;
@@ -53,8 +53,8 @@ int main() {
         fin >> cow.first >> cow.second;
     }
 
-    sort(cows.begin(), cows.end());
-    sort(chickens.begin(), chickens.end());
+    std::sort(cows.begin(), cows.end());
+    std::sort(chickens.begin(), chickens.end());
 
     ofstream fout("helpcross.out");
     fout << solve(chickens, cows) << '\n';
