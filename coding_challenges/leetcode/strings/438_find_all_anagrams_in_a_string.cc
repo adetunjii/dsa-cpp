@@ -1,3 +1,4 @@
+#include <functional>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -8,7 +9,7 @@ std::vector<int> findAnagrams(std::string s, std::string p) {
     }
 
     std::vector<int> indexes, sc(26, 0), pc(26, 0);
-    auto isEqual = [&]() -> bool {
+    std::function isEqual = [&]() -> bool {
         for (int i = 0; i < 26; i++) {
             if (sc[i] != pc[i]) {
                 return false;
