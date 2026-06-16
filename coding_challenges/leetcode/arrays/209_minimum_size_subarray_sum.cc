@@ -3,8 +3,6 @@
 #include <limits>
 #include <vector>
 
-using namespace std;
-
 int minSubArrayLen(int target, std::vector<int>& nums) {
     int N = nums.size();
     if (N == 0)
