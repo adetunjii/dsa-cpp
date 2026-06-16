@@ -1,6 +1,9 @@
+#include <algorithm>
 #include <iostream>
 #include <limits>
 #include <vector>
+
+using namespace std;
 
 int minSubArrayLen(int target, std::vector<int>& nums) {
     int N = nums.size();
