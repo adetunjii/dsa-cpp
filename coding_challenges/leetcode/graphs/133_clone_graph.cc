@@ -32,7 +32,6 @@ Node* cloneGraph(Node* node) {
 
             clone->neighbors.push_back(map[neighbor]);
         }
-
         return map[node];
     }
 }
