@@ -1,6 +1,4 @@
-#include <algorithm>
-#include <iostream>
-#include <limits>
+#include <limits.h>
 #include <vector>
 
 int minSubArrayLen(int target, std::vector<int>& nums) {
@@ -22,7 +20,7 @@ int minSubArrayLen(int target, std::vector<int>& nums) {
             return right - left + 1;
         }
 
-        while (current > target) {
+        while (current >= target) {
             minLength = std::min(minLength, right - left + 1);
             current -= nums[left];
             left += 1;
