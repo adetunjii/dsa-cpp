@@ -73,6 +73,5 @@ vector<int> maxSlidingWindowDeque(vector<int>& nums, int k) {
         if (i >= k - 1)
             res.push_back(nums[q.front()]);
     }
-
     return res;
 }
