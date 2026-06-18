@@ -1,84 +1,78 @@
-#include <iostream>
-#include <vector>
-#include <set>
-#include <ranges>
 #include <deque>
+#include <iostream>
+#include <limits.h>
+#include <ranges>
+#include <set>
+#include <vector>
 
 using namespace std;
 
-class Solution {
-public:
-    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-        multiset<int> ms;
-        vector<int> res;
+vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+    multiset<int> ms;
+    vector<int> res;
 
-        for (int i = 0; i < k; i++) { ms.insert(nums[i]); }
-
-        for (int i = k; i < nums.size(); i++) {
-            // multiset inserts in ascending order by default whilst allowing duplicates to exist
-            res.push_back(*ms.rbegin()); // append the element at the end of the multiset for this current window - rbegin(reverse begin)
-            ms.erase(ms.find(nums[i-k])); // shrink the window
-            ms.insert(nums[i]); // expand the window
-        }
-        res.push_back(*ms.rbegin()); // find the max value again since we're only inserting after after we've handled previous window.
-        return res;
+    for (int i = 0; i < k; i++) {
+        ms.insert(nums[i]);
     }
 
-    vector<int> maxSlidingWindowBruteForce(vector<int>& nums, int k) {
-        int N = nums.size();
-        if (N == 0) return {};
+    for (int i = k; i < nums.size(); i++) {
+        // multiset inserts in ascending order by default whilst allowing duplicates to exist
+        res.push_back(*ms.rbegin());    // append the element at the end of the multiset for this
+                                        // current window - rbegin(reverse begin)
+        ms.erase(ms.find(nums[i - k])); // shrink the window
+        ms.insert(nums[i]);             // expand the window
+    }
+    res.push_back(*ms.rbegin()); // find the max value again since we're only inserting after
+                                 // after we've handled previous window.
+    return res;
+}
 
-        vector<int> res;
+vector<int> maxSlidingWindowBruteForce(vector<int>& nums, int k) {
+    int N = nums.size();
+    if (N == 0)
+        return {};
 
-        int left = 0, right = k;
+    vector<int> res;
 
-        while (right <= N) {
-            int currentMin = INT_MIN;
-            
-            int i = left; 
-            for (int i : std::views::iota(left, right)) {
-                currentMin = max(currentMin, nums[i]);
-            }
+    int left = 0, right = k;
 
-            res.push_back(currentMin);
+    while (right <= N) {
+        int currentMin = INT_MIN;
 
-            left += 1;
-            right += 1;
+        int i = left;
+        for (int i : std::views::iota(left, right)) {
+            currentMin = max(currentMin, nums[i]);
         }
 
-        return res;
+        res.push_back(currentMin);
+
+        left += 1;
+        right += 1;
     }
 
-    vector<int> maxSlidingWindowDeque(vector<int>& nums, int k) {
-        int N = nums.size();
+    return res;
+}
 
-        deque<int> q;
-        vector<int> res;
-        res.reserve(N - k + 1);
+vector<int> maxSlidingWindowDeque(vector<int>& nums, int k) {
+    int N = nums.size();
 
-        for (int i = 0; i < k; i++) {
-            while (!q.empty() && nums[i] > nums[q.back()]) {
-                q.pop_back();
-            }
-            q.push_back(i);
+    deque<int> q;
+    vector<int> res;
+
+    for (int i = 0; i < N; i++) {
+        if (!q.empty() && q.front() <= i - k) {
+            q.pop_front();
         }
 
-        res.push_back(nums[q.front()]);
+        while (!q.empty() && nums[i] >= nums[q.back()]) {
+            q.pop_back();
+        }
 
-        for (int i = k; i < N; i++) {
-            while (!q.empty() && nums[i] > nums[q.back()]) {
-                q.pop_back();
-            }
-            
-            q.push_back(i);
+        q.push_back(i);
 
-            if (!q.empty() && q.front() == i-k) {
-                q.pop_front();
-            }
-            
+        if (i >= k - 1)
             res.push_back(nums[q.front()]);
-        }
-
-        return res;
     }
-};
+
+    return res;
+}
