@@ -1,32 +1,28 @@
 #include <iostream>
+#include <string>
+#include <vector>
 
-using namespace std;
+std::string encode(std::vector<std::string>& strs) {
+    std::string encoded = "";
+    for (auto str : strs) {
+        encoded += str;
+        encoded += '\n';
+    }
+    return encoded;
+}
 
-class Solution {
-public:
+std::vector<std::string> decode(std::string s) {
+    std::vector<std::string> res;
 
-    string encode(vector<string>& strs) {
-        string encoded = "";
-        for (auto str : strs) {
-            encoded += str;
-            encoded += '\n';
+    std::string temp = "";
+    for (auto c : s) {
+        if (c == '\n') {
+            res.push_back(temp);
+            temp = "";
+            continue;
         }
-        return encoded;
+        temp += c;
     }
 
-    vector<string> decode(string s) {
-        vector<string> res;
-
-        string temp = "";
-        for (auto c : s) {
-            if (c == '\n') {
-                res.push_back(temp);
-                temp = "";
-                continue;
-            }
-            temp += c;
-        }
-
-        return res;
-    }
-};
+    return res;
+}
