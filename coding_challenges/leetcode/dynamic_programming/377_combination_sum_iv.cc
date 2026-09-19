@@ -1,12 +1,12 @@
 #include <vector>
 namespace dp {
     int combinationSum4(std::vector<int>& nums, int target) {
-        std::vector<long long> dp(target+1, 0);
+        std::vector<unsigned int> dp(target+1, 0);
         dp[0] = 1;
 
         for (int i = 1; i <= target; i++) {
             for (int num : nums) {
-                if (i >= num && dp[i] <= INT_MAX) {
+                if (i >= num) {
                     dp[i] += dp[i-num];
                 }
             }
