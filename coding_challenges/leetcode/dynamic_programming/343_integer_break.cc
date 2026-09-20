@@ -11,7 +11,6 @@ int integerBreak(int n) {
             dp[i] = std::max(dp[i], std::max(j * (i - j), j * dp[i - j]));
         }
     }
-
     return dp[n];
 }
 } // namespace dp
