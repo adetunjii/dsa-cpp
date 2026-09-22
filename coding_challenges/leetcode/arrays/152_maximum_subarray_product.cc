@@ -45,7 +45,6 @@ int maxProduct(std::vector<int>& nums) {
 
         res = std::max(res, maxProd);
     }
-
     return res;
 }
 };
